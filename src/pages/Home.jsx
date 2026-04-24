@@ -115,10 +115,10 @@ export default function Home() {
     <div>
       {/* ── HERO — split layout ── */}
       <section style={{
-        minHeight: '100vh',
+        minHeight: 'auto',
         background: 'linear-gradient(135deg, #0f172a 0%, #0f766e 70%, #0d9488 100%)',
         display: 'flex', alignItems: 'center',
-        paddingTop: 90, overflow: 'hidden', position: 'relative'
+        paddingTop: 120, overflow: 'hidden', position: 'relative'
       }}>
         {/* Background pattern */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(245,158,11,0.08) 0%, transparent 50%)', pointerEvents: 'none' }} />
@@ -167,7 +167,7 @@ export default function Home() {
           </div>
 
           {/* Right: image card collage */}
-          <div style={{ position: 'relative', height: 480 }}>
+          <div className="hero-img-col" style={{ position: 'relative', height: 480 }}>
             <style>{`@keyframes heroImgIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}`}</style>
             {/* Main image */}
             <div style={{ position: 'absolute', top: 0, left: 0, right: 40, bottom: 40, borderRadius: 24, overflow: 'hidden', boxShadow: '0 32px 80px rgba(0,0,0,0.4)', animation: 'heroImgIn 1s ease 0.3s both' }}>
@@ -183,7 +183,7 @@ export default function Home() {
               </div>
             </div>
             {/* Floating card 2 */}
-            <div style={{ position: 'absolute', top: 24, right: -10, background: 'white', borderRadius: 16, padding: '14px 18px', boxShadow: '0 16px 48px rgba(0,0,0,0.2)', animation: 'heroImgIn 1s ease 0.8s both' }}>
+            <div style={{ position: 'absolute', top: 24, right: 10, background: 'white', borderRadius: 16, padding: '14px 18px', boxShadow: '0 16px 48px rgba(0,0,0,0.2)', animation: 'heroImgIn 1s ease 0.8s both' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: '#f0fdfa', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🏅</div>
                 <div>
@@ -268,7 +268,7 @@ export default function Home() {
                   <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Professional team" style={{ width: '100%', height: 420, objectFit: 'cover' }} />
                 </div>
                 {/* Floating badge */}
-                <div style={{ position: 'absolute', bottom: -20, right: -20, background: 'linear-gradient(135deg,#0f766e,#0d9488)', borderRadius: 16, padding: '20px 24px', color: 'white', boxShadow: '0 16px 40px rgba(13,148,136,0.4)' }}>
+                <div style={{ position: 'absolute', bottom: 10, right: 10, background: 'linear-gradient(135deg,#0f766e,#0d9488)', borderRadius: 16, padding: '20px 24px', color: 'white', boxShadow: '0 16px 40px rgba(13,148,136,0.4)' }}>
                   <div style={{ fontWeight: 800, fontSize: 28 }}>500+</div>
                   <div style={{ fontSize: 13, opacity: 0.85 }}>Happy Clients</div>
                 </div>
