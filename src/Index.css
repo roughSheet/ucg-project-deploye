@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0d9488;
+  --primary-dark: #0f766e;
+  --primary-light: #14b8a6;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
+  --dark: #0f172a;
+  --dark-2: #1e293b;
+  --text: #374151;
+  --text-light: #6b7280;
+  --light: #f9fafb;
+  --light-2: #f0fdfa;
+  --border: #e5e7eb;
+  --white: #ffffff;
+}
+
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+a { text-decoration: none; color: inherit; }
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--accent);
+  color: #0f172a !important;
+  padding: 13px 30px; border-radius: 8px;
+  font-weight: 700; font-size: 15px; border: none;
+  cursor: pointer; transition: all 0.3s; display: inline-block;
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.4); }
+
+.btn-secondary {
+  background: var(--primary); color: white !important;
+  padding: 13px 30px; border-radius: 8px;
+  font-weight: 700; font-size: 15px; border: none;
+  cursor: pointer; transition: all 0.3s; display: inline-block;
+}
+.btn-secondary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,0.4); }
+
+.btn-outline-white {
+  border: 2px solid rgba(255,255,255,0.8); color: white !important;
+  padding: 11px 28px; border-radius: 8px; font-weight: 600;
+  font-size: 15px; background: transparent; cursor: pointer;
+  transition: all 0.3s; display: inline-block;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: white; transform: translateY(-2px); }
+
+.btn-outline-dark {
+  border: 2px solid var(--primary); color: var(--primary) !important;
+  padding: 11px 28px; border-radius: 8px; font-weight: 600;
+  font-size: 15px; background: transparent; cursor: pointer;
+  transition: all 0.3s; display: inline-block;
+}
+.btn-outline-dark:hover { background: var(--primary); color: white !important; transform: translateY(-2px); }
+
+/* ── Tags ── */
+.section-tag {
+  display: inline-block; background: rgba(13,148,136,0.1);
+  color: var(--primary); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 14px;
+}
+.section-tag-light {
+  display: inline-block; background: rgba(255,255,255,0.18);
+  color: white; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.section-tag-amber {
+  display: inline-block; background: rgba(245,158,11,0.18);
+  color: #b45309; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 14px;
+}
+
+/* ── Typography ── */
+.section-title { font-size: clamp(26px,4vw,42px); font-weight: 800; color: var(--dark); line-height: 1.18; margin-bottom: 16px; letter-spacing: -0.5px; }
+.section-title-white { font-size: clamp(26px,4vw,42px); font-weight: 800; color: white; line-height: 1.18; margin-bottom: 16px; letter-spacing: -0.5px; }
+.section-sub { font-size: 17px; color: var(--text-light); line-height: 1.75; max-width: 620px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+
+/* ── Cards ── */
+.card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+.gradient-line { height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--accent)); border-radius: 2px; width: 60px; margin-bottom: 20px; }
+
+@media (max-width: 768px) { section { padding: 64px 0; } .hide-mobile { display: none !important; } }
