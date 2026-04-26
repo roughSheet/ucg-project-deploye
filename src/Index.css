@@ -96,6 +96,11 @@ section {
 
 @media (max-width: 768px) { section { padding: 64px 0; } .hide-mobile { display: none !important; } }
 
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
 @media (max-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr !important;
@@ -115,4 +120,14 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.header-space {
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .header-space {
+    padding-top: 150px;
+  }
 }

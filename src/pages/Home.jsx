@@ -114,16 +114,16 @@ export default function Home() {
   return (
     <div>
       {/* ── HERO — split layout ── */}
-      <section style={{
+      <section className="header-space" style={{
         minHeight: 'auto',
         background: 'linear-gradient(135deg, #0f172a 0%, #0f766e 70%, #0d9488 100%)',
         display: 'flex', alignItems: 'center',
-        paddingTop: 120, overflow: 'hidden', position: 'relative'
+        paddingTop: window.innerWidth < 768 ? 140 : 120, overflow: 'hidden', position: 'relative'
       }}>
         {/* Background pattern */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(245,158,11,0.08) 0%, transparent 50%)', pointerEvents: 'none' }} />
 
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center', position: 'relative', zIndex: 1, padding: '60px 24px' }}>
+        <div className="container hero-grid" style={{ display: 'grid',  gap: 60, alignItems: 'center', position: 'relative', zIndex: 1, padding: '60px 24px' }}>
           {/* Left: text */}
           <div>
             <style>{`@keyframes heroFadeIn{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}`}</style>
@@ -144,7 +144,7 @@ export default function Home() {
                 Achieve exponential growth by outsourcing non-core functions — Record Retrieval, Revenue Cycle Management, Medical Coding, and more.
               </p>
 
-              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-start', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
                 <Link to="/contact" style={{ background: '#f59e0b', color: '#0f172a', padding: '15px 36px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 20px rgba(245,158,11,0.4)' }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#d97706'; e.currentTarget.style.transform = 'translateY(-2px)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#f59e0b'; e.currentTarget.style.transform = 'translateY(0)' }}>
@@ -167,7 +167,7 @@ export default function Home() {
           </div>
 
           {/* Right: image card collage */}
-          <div className="hero-img-col" style={{ position: 'relative', height: 480 }}>
+          <div className="hero-img-col" style={{ position: 'relative', height: 480, display: window.innerWidth < 768 ? 'none' : 'block' }}>
             <style>{`@keyframes heroImgIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}`}</style>
             {/* Main image */}
             <div style={{ position: 'absolute', top: 0, left: 0, right: 40, bottom: 40, borderRadius: 24, overflow: 'hidden', boxShadow: '0 32px 80px rgba(0,0,0,0.4)', animation: 'heroImgIn 1s ease 0.3s both' }}>

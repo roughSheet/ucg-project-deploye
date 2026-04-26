@@ -27,9 +27,9 @@ export default function Navbar() {
   return (
     <>
       {/* ── Top contact bar ── */}
-      <div style={{ background: '#f8fafc', color: '#374151', fontSize: 13, padding: '8px 0', borderBottom: '1px solid #e5e7eb', display: scrolled ? 'none' : 'block' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+      <div style={{ background: '#f8fafc', color: '#374151', fontSize: 13, padding: '8px 0', borderBottom: '1px solid #e5e7eb', display: scrolled ? 'none' : 'block', minHeight: 40 }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8, rowGap: 6 }}>
+          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' , maxWidth: '100%' }}>
             <span>📧 Info@u-cgs.com</span>
             <span>📞 +1 307-213-4034 | +91 88666 42472</span>
           </div>
@@ -49,7 +49,7 @@ export default function Navbar() {
         boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.08)' : 'none',
         transition: 'all 0.4s ease',
         padding: scrolled ? '12px 0' : '18px 0',
-        marginTop: scrolled ? 0 : 37,
+        
       }}>
         <div className="container" style={{  display: 'flex', alignItems: 'center', justifyContent: 'space-between'  }}>
 
@@ -57,7 +57,7 @@ export default function Navbar() {
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div style={{ width: 55, height: 55, borderRadius: 10, background: 'linear-gradient(135deg,#0d9488,#0f766e)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: 44, flexShrink: 0, boxShadow: '0 2px 10px rgba(13,148,136,0.4)', marginLeft: 9 }}>U</div>
             <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontWeight: 800, fontSize: 28, color: scrolled ? '#0f172a' : 'white' }}>U-Connect Global</div>
+              <div style={{ fontWeight: 800, fontSize: window.innerWidth < 768 ? 18 : 28, color: scrolled ? '#0f172a' : 'white',whiteSpace: 'nowrap'}}>U-Connect Global</div>
               <div style={{ fontSize: 14, color: scrolled ? '#9ca3af' : 'rgba(255,255,255,0.65)', letterSpacing: 2, textTransform: 'uppercase' }}>Services</div>
             </div>
           </Link>
