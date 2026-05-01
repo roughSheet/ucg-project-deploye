@@ -4,11 +4,11 @@
 
 :root {
   /* Navy/blue professional theme */
-  --primary: #1d6fb8;
-  --primary-dark: #1557a0;
-  --primary-light: #3b82f6;
-  --accent: #0ea5e9;
-  --accent-dark: #0284c7;
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #60a5fa;
+  --accent: #06b6d4;
+  --accent-dark: #0891b2;
   --navy: #0b1c2c;
   --navy-2: #1f3c5a;
 
@@ -18,23 +18,22 @@
   --text-light: #6b7280;
   --light: #f9fafb;
   --light-2: #eff6ff;   /* light blue tint */
-  --border: #dbeafe;
   --white: #ffffff;
 
 /* SURFACES */
   --bg-main: #ffffff;
-  --bg-soft: #f0f7ff;
-  --bg-dark: #0b1c2c;
-  --bg-dark-2: #1f3c5a;
+  --bg-soft: #f8fbff;
+  --bg-dark: #0f172a;
+  --bg-dark-2: #1e293b;
 
   /* TEXT */
   --text-main: #0f172a;
-  --text-muted: #6b7280;
+  --text-muted: #64748b;
   --text-light: rgba(255,255,255,0.7);
   --ucg-mob-menu: rgba(255,255,255,0.1);
 
   /* BORDER */
-  --border: #dbeafe;
+  --border: #e2e8f0;
   --border-soft: #e5e7eb;
 
   /* STATUS */

@@ -3,7 +3,7 @@ import logo from '../assets/logo.png'   // same logo import
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0b1c2c', color: 'rgba(255,255,255,0.68)' }}>
+    <footer style={{ background: 'var(--bg-dark)', color: 'rgba(255,255,255,0.68)' }}>
       {/* Top accent bar */}
       <div style={{ height: 4, background: 'linear-gradient(90deg, #1d6fb8, #60a5fa, #0ea5e9)' }} />
 

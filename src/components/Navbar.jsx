@@ -158,7 +158,7 @@ export default function Navbar() {
         }
 
         .ucg-mob-menu {
-          background: #0b1c2c;
+          background: var(--bg-dark);
           border-top: 1px solid rgba(255,255,255,0.1);
           padding: 12px 20px 20px;
           max-height: 80vh;

@@ -38,7 +38,7 @@ function CountUp({ target, suffix = '', duration = 2000 }) {
 }
 
 const services = [
-  { title: 'Record Retrieval Services', desc: 'Fast, accurate medical record retrieval for legal, insurance, and healthcare organizations with HIPAA-compliant delivery.', path: '/record-retrieval-services', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80', color: '#1557a0', icon: '📋' },
+  { title: 'Record Retrieval Services', desc: 'Fast, accurate medical record retrieval for legal, insurance, and healthcare organizations with HIPAA-compliant delivery.', path: '/record-retrieval-services', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80', color: 'var(--primary-dark)', icon: '📋' },
   { title: 'Medical Coding Services', desc: 'Certified coders delivering 95%+ first-pass acceptance rates across 40+ specialties with full ICD-10 compliance.', path: '/medical-billing-coding', img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80', color: '#0369a1', icon: '⚕️' },
   { title: 'Revenue Cycle Management', desc: 'End-to-end RCM solutions — eligibility, claims, AR follow-up, denial management — to maximize your collections.', path: '/revenue-cycle-management', img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80', color: '#1e40af', icon: '💰' },
   { title: 'Medical Records Summarization', desc: 'Transform thousands of pages into clear, actionable summaries for legal and insurance professionals. Save 20+ hrs per case.', path: '/medical-records-summarization', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80', color: '#075985', icon: '📝' },
@@ -83,7 +83,7 @@ export default function Home() {
         /* ───── Hero ───── */
         .hero-wrap {
           min-height: auto;
-          background: linear-gradient(135deg, #0b1c2c 0%, #1f3c5a 55%, #1d6fb8 100%);
+          background: var(--gradient-primary);
           display: flex; align-items: center;
           padding-top: 90px; overflow: hidden; position: relative;
         }
@@ -217,8 +217,8 @@ export default function Home() {
           .stats-grid {
             grid-template-columns: 1fr 1fr !important;
           }
-          .stats-grid > div { border-right: none !important; border-bottom: 1px solid #dbeafe !important; }
-          .stats-grid > div:nth-child(odd)  { border-right: 1px solid #dbeafe !important; }
+          .stats-grid > div { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+          .stats-grid > div:nth-child(odd)  { border-right: 1px solid var(--border) !important; }
           .stats-grid > div:nth-child(3),
           .stats-grid > div:nth-child(4)    { border-bottom: none !important; }
 
@@ -246,8 +246,8 @@ export default function Home() {
             </div>
             {/* Floating cards */}
             <div className="hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', animation: 'heroImgIn 1s ease 0.6s both', minWidth: 160 }}>
-              <div style={{ fontSize: 26, fontWeight: 800, color: '#1d6fb8' }}>99%</div>
-              <div style={{ fontSize: 12, color: '#6b7280', fontWeight: 500 }}>Client Retention Rate</div>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>99%</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>Client Retention Rate</div>
               <div style={{ display: 'flex', gap: 3, marginTop: 5 }}>
                 {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#f59e0b', fontSize: 11 }}>★</span>)}
               </div>
@@ -256,8 +256,8 @@ export default function Home() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🏅</div>
                 <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0f172a' }}>ISO Certified</div>
-                  <div style={{ fontSize: 11, color: '#6b7280' }}>27001:2013</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-main)' }}>ISO Certified</div>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>27001:2013</div>
                 </div>
               </div>
             </div>
@@ -281,9 +281,9 @@ export default function Home() {
 
             <div className="hero-btns" style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
               <Link to="/contact"
-                style={{ background: '#1d6fb8', color: 'white', padding: '13px 30px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(29,111,184,0.45)' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#1557a0'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#1d6fb8'; e.currentTarget.style.transform = 'translateY(0)' }}>
+                style={{ background: 'var(--primary)', color: 'white', padding: '13px 30px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(29,111,184,0.45)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-dark)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'var(--primary)'; e.currentTarget.style.transform = 'translateY(0)' }}>
                 Get Started Free →
               </Link>
               <Link to="/about"
@@ -304,16 +304,16 @@ export default function Home() {
       </section>
 
       {/* ── STATS ── */}
-      <section style={{ padding: '44px 0', background: 'white', borderBottom: '1px solid #dbeafe' }}>
+      <section style={{ padding: '44px 0', background: 'white', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div className="stats-grid">
             {stats.map((s, i) => (
-              <div key={i} style={{ textAlign: 'center', padding: '22px 14px', borderRight: i < stats.length - 1 ? '1px solid #dbeafe' : 'none' }}>
+              <div key={i} style={{ textAlign: 'center', padding: '22px 14px', borderRight: i < stats.length - 1 ? '1px solid var(--border)' : 'none' }}>
                 <div style={{ fontSize: 20, marginBottom: 6 }}>{s.icon}</div>
-                <div style={{ fontSize: 36, fontWeight: 800, color: '#1d6fb8', lineHeight: 1 }}>
+                <div style={{ fontSize: 36, fontWeight: 800, color: 'var(--primary)', lineHeight: 1 }}>
                   <CountUp target={s.number} suffix={s.suffix} />
                 </div>
-                <div style={{ fontSize: 12, color: '#6b7280', marginTop: 5, fontWeight: 500 }}>{s.label}</div>
+                <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 5, fontWeight: 500 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -325,15 +325,15 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
             <FadeIn>
-              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: '#1d6fb8', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Our Services</span>
-              <h2 style={{ fontSize: 'clamp(24px,4vw,38px)', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: 12 }}>Complete BPO Solutions for Healthcare</h2>
-              <p style={{ fontSize: 16, color: '#6b7280', maxWidth: 540, margin: '0 auto' }}>From record retrieval to revenue cycle management — we handle the complexity so you can focus on growth.</p>
+              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: 'var(--primary)', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Our Services</span>
+              <h2 style={{ fontSize: 'clamp(24px,4vw,38px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2, marginBottom: 12 }}>Complete BPO Solutions for Healthcare</h2>
+              <p style={{ fontSize: 16, color: 'var(--text-muted)', maxWidth: 540, margin: '0 auto' }}>From record retrieval to revenue cycle management — we handle the complexity so you can focus on growth.</p>
             </FadeIn>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 22 }}>
             {services.map((s, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <Link to={s.path} style={{ display: 'block', borderRadius: 18, overflow: 'hidden', background: 'white', boxShadow: '0 2px 18px rgba(0,0,0,0.06)', border: '1px solid #dbeafe', transition: 'all 0.35s', textDecoration: 'none' }}
+                <Link to={s.path} style={{ display: 'block', borderRadius: 18, overflow: 'hidden', background: 'white', boxShadow: '0 2px 18px rgba(0,0,0,0.06)', border: '1px solid var(--border)', transition: 'all 0.35s', textDecoration: 'none' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-7px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.12)' }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 18px rgba(0,0,0,0.06)' }}>
                   <div style={{ height: 185, overflow: 'hidden', position: 'relative' }}>
@@ -342,8 +342,8 @@ export default function Home() {
                     <div style={{ position: 'absolute', bottom: 14, left: 14, fontSize: 26 }}>{s.icon}</div>
                   </div>
                   <div style={{ padding: '20px 22px' }}>
-                    <h3 style={{ fontWeight: 700, color: '#0f172a', fontSize: 16, marginBottom: 8, lineHeight: 1.3 }}>{s.title}</h3>
-                    <p style={{ color: '#6b7280', fontSize: 13, lineHeight: 1.65, marginBottom: 14 }}>{s.desc}</p>
+                    <h3 style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 16, marginBottom: 8, lineHeight: 1.3 }}>{s.title}</h3>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.65, marginBottom: 14 }}>{s.desc}</p>
                     <div style={{ color: s.color, fontWeight: 700, fontSize: 13 }}>Learn More →</div>
                   </div>
                 </Link>
@@ -364,7 +364,7 @@ export default function Home() {
                 <div style={{ borderRadius: 22, overflow: 'hidden', boxShadow: '0 20px 56px rgba(0,0,0,0.14)' }}>
                   <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Professional team" style={{ width: '100%', height: 400, objectFit: 'cover' }} />
                 </div>
-                <div className="about-float-badge" style={{ position: 'absolute', bottom: 10, right: 10, background: 'linear-gradient(135deg,#1557a0,#1d6fb8)', borderRadius: 14, padding: '16px 20px', color: 'white', boxShadow: '0 12px 32px rgba(29,111,184,0.38)' }}>
+                <div className="about-float-badge" style={{ position: 'absolute', bottom: 10, right: 10, background: 'linear-gradient(135deg,var(--primary-dark),var(--primary))', borderRadius: 14, padding: '16px 20px', color: 'white', boxShadow: '0 12px 32px rgba(29,111,184,0.38)' }}>
                   <div style={{ fontWeight: 800, fontSize: 26 }}>500+</div>
                   <div style={{ fontSize: 12, opacity: 0.85 }}>Happy Clients</div>
                 </div>
@@ -374,26 +374,26 @@ export default function Home() {
             {/* Text col — on mobile: order:2 */}
             <FadeIn direction="right" delay={0.15}>
               <div className="about-text-col">
-                <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: '#1d6fb8', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 14 }}>About U-CGS</span>
-                <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: 14 }}>Enabling Clients to Focus on Their Strengths</h2>
-                <div style={{ height: 4, width: 56, background: 'linear-gradient(90deg,#1d6fb8,#60a5fa)', borderRadius: 2, marginBottom: 18 }} />
-                <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.75, marginBottom: 14 }}>
+                <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: 'var(--primary)', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 14 }}>About U-CGS</span>
+                <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2, marginBottom: 14 }}>Enabling Clients to Focus on Their Strengths</h2>
+                <div style={{ height: 4, width: 56, background: 'linear-gradient(90deg,var(--primary),#60a5fa)', borderRadius: 2, marginBottom: 18 }} />
+                <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: 14 }}>
                   At U-CGS, we prioritize the security of sensitive healthcare data, ensuring the highest standards in data management and service delivery.
                 </p>
-                <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.75, marginBottom: 26 }}>
+                <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: 26 }}>
                   We take pride not in claiming to be the best, but in delivering exceptional, cost-effective, and professional solutions that exceed expectations.
                 </p>
                 <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 26 }}>
-                  {[['🏅', 'ISO 27001:2013', '#1d6fb8'], ['🔒', 'HIPAA Compliant', '#0369a1'], ['✅', 'US & India Offices', '#1e40af']].map(([icon, text, color], i) => (
+                  {[['🏅', 'ISO 27001:2013', 'var(--primary)'], ['🔒', 'HIPAA Compliant', '#0369a1'], ['✅', 'US & India Offices', '#1e40af']].map(([icon, text, color], i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 7, background: `${color}10`, border: `1px solid ${color}28`, borderRadius: 9, padding: '8px 13px' }}>
                       <span style={{ fontSize: 13 }}>{icon}</span>
                       <span style={{ fontSize: 12, fontWeight: 600, color }}>{text}</span>
                     </div>
                   ))}
                 </div>
-                <Link to="/about" style={{ background: '#1d6fb8', color: 'white', padding: '11px 26px', borderRadius: 8, fontWeight: 700, fontSize: 14, display: 'inline-block', transition: 'all 0.2s' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#1557a0'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#1d6fb8'; e.currentTarget.style.transform = 'translateY(0)' }}>
+                <Link to="/about" style={{ background: 'var(--primary)', color: 'white', padding: '11px 26px', borderRadius: 8, fontWeight: 700, fontSize: 14, display: 'inline-block', transition: 'all 0.2s' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-dark)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'var(--primary)'; e.currentTarget.style.transform = 'translateY(0)' }}>
                   Learn About Us →
                 </Link>
               </div>
@@ -407,8 +407,8 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 52 }}>
             <FadeIn>
-              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: '#1d6fb8', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>How It Works</span>
-              <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: '#0f172a', lineHeight: 1.2 }}>Get Started in 4 Simple Steps</h2>
+              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: 'var(--primary)', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>How It Works</span>
+              <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>Get Started in 4 Simple Steps</h2>
             </FadeIn>
           </div>
           <div className="process-grid">
@@ -416,22 +416,22 @@ export default function Home() {
               <FadeIn key={i} delay={i * 0.12}>
                 <div style={{ textAlign: 'center', padding: '24px 18px', position: 'relative' }}>
                   {i < process.length - 1 && (
-                    <div className="hide-mobile" style={{ position: 'absolute', top: 44, right: 0, width: '50%', height: 2, background: 'linear-gradient(90deg,#1d6fb8,#bfdbfe)', zIndex: 0 }} />
+                    <div className="hide-mobile" style={{ position: 'absolute', top: 44, right: 0, width: '50%', height: 2, background: 'linear-gradient(90deg,var(--primary),#bfdbfe)', zIndex: 0 }} />
                   )}
-                  <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'linear-gradient(135deg,#1557a0,#1d6fb8)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', boxShadow: '0 6px 20px rgba(29,111,184,0.32)', position: 'relative', zIndex: 1 }}>
+                  <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'linear-gradient(135deg,var(--primary-dark),var(--primary))', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', boxShadow: '0 6px 20px rgba(29,111,184,0.32)', position: 'relative', zIndex: 1 }}>
                     <span style={{ fontSize: 24 }}>{p.icon}</span>
                   </div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: '#1d6fb8', letterSpacing: 1.5, marginBottom: 6 }}>STEP {p.step}</div>
-                  <h3 style={{ fontWeight: 700, color: '#0f172a', fontSize: 15, marginBottom: 7 }}>{p.title}</h3>
-                  <p style={{ color: '#6b7280', fontSize: 13, lineHeight: 1.65 }}>{p.desc}</p>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--primary)', letterSpacing: 1.5, marginBottom: 6 }}>STEP {p.step}</div>
+                  <h3 style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 15, marginBottom: 7 }}>{p.title}</h3>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.65 }}>{p.desc}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 36 }}>
-            <Link to="/contact" style={{ background: '#1d6fb8', color: 'white', padding: '13px 34px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(29,111,184,0.32)' }}
-              onMouseEnter={e => e.currentTarget.style.background = '#1557a0'}
-              onMouseLeave={e => e.currentTarget.style.background = '#1d6fb8'}>
+            <Link to="/contact" style={{ background: 'var(--primary)', color: 'white', padding: '13px 34px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(29,111,184,0.32)' }}
+              onMouseEnter={e => e.currentTarget.style.background = 'var(--primary-dark)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'var(--primary)'}>
               Start Your Free Consultation
             </Link>
           </div>
@@ -446,15 +446,15 @@ export default function Home() {
             {/* Left: tag + title + cards */}
             <FadeIn>
               <div className="why-text-col">
-                <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: '#1d6fb8', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Why Choose Us</span>
-                <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: '#0f172a', lineHeight: 1.2, marginBottom: 12 }}>Why 500+ Clients Trust U-CGS</h2>
-                <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.75, marginBottom: 24 }}>We don't just promise results — we deliver them with a team that treats your business like our own.</p>
+                <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: 'var(--primary)', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Why Choose Us</span>
+                <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2, marginBottom: 12 }}>Why 500+ Clients Trust U-CGS</h2>
+                <p style={{ fontSize: 15, color: 'var(--text-muted)', lineHeight: 1.75, marginBottom: 24 }}>We don't just promise results — we deliver them with a team that treats your business like our own.</p>
                 <div className="why-cards-grid">
                   {whyUs.map((w, i) => (
                     <div key={i} style={{ padding: '15px 16px', background: i % 2 === 0 ? '#f0f7ff' : '#f0f9ff', borderRadius: 12, border: `1px solid ${i % 2 === 0 ? '#bfdbfe' : '#bae6fd'}` }}>
                       <div style={{ fontSize: 19, marginBottom: 6 }}>{w.icon}</div>
-                      <div style={{ fontWeight: 700, color: '#0f172a', fontSize: 13, marginBottom: 4 }}>{w.title}</div>
-                      <div style={{ color: '#6b7280', fontSize: 12, lineHeight: 1.55 }}>{w.desc}</div>
+                      <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 13, marginBottom: 4 }}>{w.title}</div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: 12, lineHeight: 1.55 }}>{w.desc}</div>
                     </div>
                   ))}
                 </div>
@@ -477,7 +477,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section style={{ background: 'linear-gradient(135deg,#0b1c2c 0%,#1f3c5a 55%,#1d6fb8 100%)', padding: '80px 0' }}>
+      <section style={{ background: 'linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-dark-2) 55%,var(--primary) 100%)', padding: '80px 0' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 44 }}>
             <FadeIn>
@@ -494,7 +494,7 @@ export default function Home() {
                   </div>
                   <p style={{ color: 'rgba(255,255,255,0.88)', lineHeight: 1.78, marginBottom: 22, fontStyle: 'italic', fontSize: 14 }}>"{t.text}"</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <div style={{ width: 42, height: 42, borderRadius: '50%', background: 'linear-gradient(135deg,#1d6fb8,#60a5fa)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: 16, flexShrink: 0 }}>{t.initial}</div>
+                    <div style={{ width: 42, height: 42, borderRadius: '50%', background: 'linear-gradient(135deg,var(--primary),#60a5fa)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: 16, flexShrink: 0 }}>{t.initial}</div>
                     <div>
                       <div style={{ fontWeight: 700, color: 'white', fontSize: 14 }}>{t.name}</div>
                       <div style={{ fontSize: 12, color: '#93c5fd', marginTop: 2 }}>{t.company}</div>
@@ -512,18 +512,18 @@ export default function Home() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 44 }}>
             <FadeIn>
-              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: '#1d6fb8', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Industries We Serve</span>
-              <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: '#0f172a', lineHeight: 1.2 }}>Built for Healthcare, Legal & Insurance</h2>
+              <span style={{ display: 'inline-block', background: 'rgba(29,111,184,0.1)', color: 'var(--primary)', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', padding: '6px 16px', borderRadius: 20, marginBottom: 12 }}>Industries We Serve</span>
+              <h2 style={{ fontSize: 'clamp(22px,4vw,36px)', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>Built for Healthcare, Legal & Insurance</h2>
             </FadeIn>
           </div>
           <div className="ind-grid">
             {[
-              { icon: '⚖️', title: 'Legal', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80', desc: 'Document review, legal research, record retrieval, and litigation support for law firms of all sizes.', link: '/record-retrieval-services', color: '#1557a0' },
+              { icon: '⚖️', title: 'Legal', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80', desc: 'Document review, legal research, record retrieval, and litigation support for law firms of all sizes.', link: '/record-retrieval-services', color: 'var(--primary-dark)' },
               { icon: '🛡️', title: 'Insurance', img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80', desc: 'Claims processing, underwriting support, and record retrieval services for insurance carriers and TPAs.', link: '/revenue-cycle-management', color: '#0369a1' },
-              { icon: '🏥', title: 'Healthcare', img: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80', desc: 'End-to-end revenue cycle management, coding, billing, and payment posting for healthcare providers.', link: '/medical-billing-coding', color: '#1d6fb8' },
+              { icon: '🏥', title: 'Healthcare', img: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80', desc: 'End-to-end revenue cycle management, coding, billing, and payment posting for healthcare providers.', link: '/medical-billing-coding', color: 'var(--primary)' },
             ].map((ind, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div style={{ borderRadius: 16, overflow: 'hidden', background: 'white', boxShadow: '0 3px 20px rgba(0,0,0,0.07)', border: '1px solid #dbeafe', transition: 'all 0.3s' }}
+                <div style={{ borderRadius: 16, overflow: 'hidden', background: 'white', boxShadow: '0 3px 20px rgba(0,0,0,0.07)', border: '1px solid var(--border)', transition: 'all 0.3s' }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.boxShadow = '0 16px 44px rgba(0,0,0,0.12)' }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 3px 20px rgba(0,0,0,0.07)' }}>
                   <div style={{ height: 165, overflow: 'hidden', position: 'relative' }}>
@@ -535,7 +535,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div style={{ padding: '18px 20px' }}>
-                    <p style={{ color: '#6b7280', fontSize: 13, lineHeight: 1.7, marginBottom: 12 }}>{ind.desc}</p>
+                    <p style={{ color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.7, marginBottom: 12 }}>{ind.desc}</p>
                     <Link to={ind.link} style={{ color: ind.color, fontWeight: 700, fontSize: 13 }}>Explore Solutions →</Link>
                   </div>
                 </div>
@@ -549,7 +549,7 @@ export default function Home() {
       <section style={{ background: 'white', padding: '68px 0' }}>
         <div className="container">
           <FadeIn>
-            <div className="cta-box" style={{ background: 'linear-gradient(135deg,#0b1c2c,#1f3c5a,#1d6fb8)', borderRadius: 24, padding: '60px 44px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 56px rgba(29,111,184,0.28)' }}>
+            <div className="cta-box" style={{ background: 'linear-gradient(135deg,var(--bg-dark),var(--bg-dark-2),var(--primary))', borderRadius: 24, padding: '60px 44px', textAlign: 'center', position: 'relative', overflow: 'hidden', boxShadow: '0 20px 56px rgba(29,111,184,0.28)' }}>
               <div style={{ position: 'absolute', top: -50, right: -50, width: 200, height: 200, borderRadius: '50%', background: 'rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <h2 style={{ fontSize: 'clamp(22px,4vw,38px)', fontWeight: 800, color: 'white', marginBottom: 12 }}>Ready to Transform Your Business?</h2>
@@ -557,9 +557,9 @@ export default function Home() {
                   Partner with U-CGS and experience the difference that expert outsourcing can make.
                 </p>
                 <div className="cta-btns" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <Link to="/contact" style={{ background: '#1d6fb8', color: 'white', padding: '14px 34px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(0,0,0,0.2)' }}
-                    onMouseEnter={e => e.currentTarget.style.background = '#1557a0'}
-                    onMouseLeave={e => e.currentTarget.style.background = '#1d6fb8'}>
+                  <Link to="/contact" style={{ background: 'var(--primary)', color: 'white', padding: '14px 34px', borderRadius: 8, fontWeight: 700, fontSize: 15, display: 'inline-block', transition: 'all 0.2s', boxShadow: '0 4px 18px rgba(0,0,0,0.2)' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'var(--primary-dark)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'var(--primary)'}>
                     Book a Free Consultation
                   </Link>
                   <Link to="/about" style={{ border: '2px solid rgba(255,255,255,0.55)', color: 'white', padding: '12px 30px', borderRadius: 8, fontWeight: 600, fontSize: 15, display: 'inline-block', transition: 'all 0.2s' }}
