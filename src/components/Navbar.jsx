@@ -1,136 +1,280 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+// Put your logo.png inside src/assets/ and import it:
+import logo from '../assets/logo.png'
 
 const services = [
-  { label: 'Record Retrieval Services', path: '/record-retrieval-services', icon: '📋', desc: 'Fast, HIPAA-compliant retrieval' },
-  { label: 'Medical Coding Services', path: '/medical-billing-coding', icon: '⚕️', desc: 'CPC & CCS certified coders' },
-  { label: 'Revenue Cycle Management', path: '/revenue-cycle-management', icon: '💰', desc: 'End-to-end RCM solutions' },
-  { label: 'Medical Records Summarization', path: '/medical-records-summarization', icon: '📝', desc: 'Save 20+ hours per case' },
+  { label: 'Record Retrieval Services', path: '/record-retrieval-services', icon: '📋' },
+  { label: 'Medical Coding Services', path: '/medical-billing-coding', icon: '⚕️' },
+  { label: 'Revenue Cycle Management', path: '/revenue-cycle-management', icon: '💰' },
+  { label: 'Medical Records Summarization', path: '/medical-records-summarization', icon: '📝' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
+    const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-  useEffect(() => { setMenuOpen(false); setServicesOpen(false) }, [location])
+  useEffect(() => { setMenuOpen(false) }, [location])
 
-  const linkColor = scrolled ? '#374151' : 'rgba(255,255,255,0.92)'
   const isActive = p => location.pathname === p
 
   return (
     <>
-      {/* ── Top contact bar ── */}
-      <div style={{ background: '#f8fafc', color: '#374151', fontSize: 13, padding: '8px 0', borderBottom: '1px solid #e5e7eb', display: scrolled ? 'none' : 'block' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            <span>📧 Info@u-cgs.com</span>
-            <span>📞 +1 307-213-4034 | +91 88666 42472</span>
-          </div>
-          <div style={{ display: 'flex', gap: 16, color: '#6b7280', fontSize: 12 }}>
-            <span>🇺🇸 USA</span>
-            <span>🇮🇳 India</span>
-            <span style={{ color: '#2dd4bf' }}>🏅 ISO 27001:2013</span>
-          </div>
+      <style>{`
+        .ucg-top-bar {
+          background: var(--bg-dark);
+          color: var(--text-light);
+          font-size: 12px;
+          padding: 6px 0;
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 1001;
+          transition: transform 0.3s ease;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .ucg-top-bar.hidden { transform: translateY(-100%); }
+
+        .ucg-nav {
+          position: fixed;
+          left: 0; right: 0;
+          z-index: 1000;
+          transition: all 0.35s ease;
+        }
+        .ucg-nav.not-scrolled {
+          background: transparent;
+          top: 32px;
+          padding: 14px 0;
+        }
+        .ucg-nav.scrolled {
+          background: rgba(11,28,44,0.97);
+          backdrop-filter: blur(16px);
+          top: 0;
+          padding: 10px 0;
+          box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        /* This wrapper is what controls width — always inside viewport */
+        .ucg-inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          box-sizing: border-box;
+        }
+
+        .ucg-logo {
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          text-decoration: none;
+          flex-shrink: 0;
+        }
+        .ucg-logo img {
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          object-fit: contain;
+          background: white;
+          padding: 2px;
+          flex-shrink: 0;
+        }
+        .ucg-logo-name {
+          font-weight: 800;
+          font-size: 16px;
+          color: white;
+          white-space: nowrap;
+          line-height: 1.2;
+        }
+        .ucg-logo-sub {
+          font-size: 9px;
+          color: rgba(255,255,255,0.5);
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        .ucg-links {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          flex: 1;
+          justify-content: flex-end;
+          min-width: 0;
+          overflow: hidden;
+        }
+        .ucg-nl {
+          color: rgba(255,255,255,0.85);
+          font-size: 13px;
+          font-weight: 500;
+          padding: 6px 8px;
+          border-radius: 6px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: all 0.2s;
+        }
+        .ucg-nl:hover { color: white; background: rgba(255,255,255,0.1); }
+        .ucg-nl.active { color: #93c5fd; }
+
+        .ucg-book {
+          background: #1d6fb8;
+          color: white !important;
+          padding: 8px 16px;
+          border-radius: 7px;
+          font-weight: 700;
+          font-size: 13px;
+          text-decoration: none;
+          white-space: nowrap;
+          flex-shrink: 0;
+          margin-left: 6px;
+          transition: all 0.2s;
+        }
+        .ucg-book:hover { background: #1557a0; transform: translateY(-1px); }
+
+        .ucg-burger {
+          display: none !important;
+          background: none;
+          border: none;
+          cursor: pointer;
+          flex-direction: column;
+          gap: 5px;
+          padding: 6px;
+          flex-shrink: 0;
+        }
+        .ucg-burger span {
+          display: block;
+          width: 22px;
+          height: 2px;
+          background: white;
+          border-radius: 2px;
+          transition: all 0.25s;
+        }
+
+        .ucg-mob-menu {
+          background: #0b1c2c;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          padding: 12px 20px 20px;
+          max-height: 80vh;
+          overflow-y: auto;
+        }
+        .ucg-ml {
+          display: block;
+          padding: 12px 0;
+          color: rgba(255,255,255,0.8);
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          font-weight: 500;
+          font-size: 15px;
+          text-decoration: none;
+        }
+        .ucg-ml:hover { color: #93c5fd; }
+        .ucg-msl {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+          padding: 11px 0;
+          border-bottom: 1px solid rgba(255,255,255,0.07);
+          text-decoration: none;
+          color: rgba(255,255,255,0.8);
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .ucg-msl:hover { color: #93c5fd; }
+        .ucg-mob-book {
+          display: block;
+          text-align: center;
+          margin-top: 16px;
+          background: #1d6fb8;
+          color: white !important;
+          padding: 13px;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 15px;
+          text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+          .ucg-links { display: none !important; }
+          .ucg-burger { display: flex !important; }
+        }
+
+        @media (max-width: 480px) {
+          .ucg-top-bar { font-size: 10.5px; padding: 5px 0; }
+          .ucg-nav.not-scrolled { top: 28px; }
+          .ucg-logo img { width: 34px; height: 34px; }
+          .ucg-logo-name { font-size: 14px; }
+        }
+      `}</style>
+
+      {/* Top bar */}
+      <div className={`ucg-top-bar ${scrolled ? 'hidden' : ''}`}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 4 }}>
+          <span>📧 Info@u-cgs.com &nbsp;|&nbsp; 📞 +1 307-213-4034 &nbsp;|&nbsp; +91 88666 42472</span>
+          
         </div>
       </div>
 
-      {/* ── Main nav ── */}
-      <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        background: scrolled ? 'rgba(255,255,255,0.98)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        boxShadow: scrolled ? '0 2px 24px rgba(0,0,0,0.08)' : 'none',
-        transition: 'all 0.4s ease',
-        padding: scrolled ? '12px 0' : '18px 0',
-        marginTop: scrolled ? 0 : 37,
-      }}>
-        <div className="container" style={{  display: 'flex', alignItems: 'center', justifyContent: 'space-between'  }}>
+      {/* Main nav */}
+      <nav className={`ucg-nav ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
+        <div className="ucg-inner">
 
           {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 55, height: 55, borderRadius: 10, background: 'linear-gradient(135deg,#0d9488,#0f766e)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 800, fontSize: 44, flexShrink: 0, boxShadow: '0 2px 10px rgba(13,148,136,0.4)', marginLeft: 9 }}>U</div>
-            <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontWeight: 800, fontSize: 28, color: scrolled ? '#0f172a' : 'white' }}>U-Connect Global</div>
-              <div style={{ fontSize: 14, color: scrolled ? '#9ca3af' : 'rgba(255,255,255,0.65)', letterSpacing: 2, textTransform: 'uppercase' }}>Services</div>
+          <Link to="/" className="ucg-logo">
+            <img src={logo} alt="U-CGS Logo" />
+            <div>
+              <div className="ucg-logo-name">U-Connect Global</div>
+              <div className="ucg-logo-sub">Services</div>
             </div>
           </Link>
 
           {/* Desktop links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 18, fontSize: 16, fontWeight: 500 }} className="desktop-nav">
-            {
-              [
-                ['/', 'Home'],
-                ['/about', 'About'],
-                ['/record-retrieval-services', 'Record Retrieval'],
-                ['/medical-billing-coding', 'Medical Coding'],
-                ['/revenue-cycle-management', 'RCM'],
-                ['/medical-records-summarization', 'Summarization'],
-                ['/blogs', 'Blogs'],
-                ['/contact', 'Contact']
-              ]
-              .map(([p, l]) => (
-              <Link key={p} to={p} style={{ color: linkColor, borderBottom: isActive(p) ? '2px solid #f59e0b' : '2px solid transparent', paddingBottom: 2, transition: 'all 0.2s' }}>{l}</Link>
+          <div className="ucg-links">
+            {[
+              ['/', 'Home'],
+              ['/about', 'About'],
+              ['/record-retrieval-services', 'Record Retrieval'],
+              ['/medical-billing-coding', 'Medical Coding'],
+              ['/revenue-cycle-management', 'RCM'],
+              ['/medical-records-summarization', 'Summarization'],
+              ['/blogs', 'Blogs'],
+              ['/contact', 'Contact'],
+            ].map(([p, l]) => (
+              <Link key={p} to={p} className={`ucg-nl ${isActive(p) ? 'active' : ''}`}>{l}</Link>
             ))}
-
-            {/* Mega menu */}
-            
-
-            <Link to="/contact" style={{ background: '#f59e0b', color: '#0f172a', padding: '10px 22px', borderRadius: 8, fontWeight: 700, fontSize: 13, transition: 'all 0.2s', marginRight: 9 }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#d97706'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#f59e0b'; e.currentTarget.style.transform = 'translateY(0)' }}>
-              Book Now
-            </Link>
+            <Link to="/contact" className="ucg-book">Book Now</Link>
           </div>
 
           {/* Hamburger */}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="hamburger" style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', flexDirection: 'column', gap: 5, padding: 4 }}>
-            {[0, 1, 2].map(i => <span key={i} style={{ display: 'block', width: 24, height: 2, background: scrolled ? '#0f172a' : 'white', borderRadius: 2 }} />)}
+          <button onClick={() => setMenuOpen(!menuOpen)} className="ucg-burger" aria-label="Toggle menu">
+            <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+            <span style={{ opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div style={{ background: 'white', padding: '16px', borderTop: '1px solid #f1f5f9', boxShadow: '0 12px 32px rgba(0,0,0,0.1)' }}>
+          <div className="ucg-mob-menu">
             {[['/', 'Home'], ['/about', 'About Us'], ['/blogs', 'Blogs'], ['/contact', 'Contact']].map(([p, l]) => (
-              <Link key={p} to={p} style={{ display: 'block', padding: '12px 0', color: '#374151', borderBottom: '1px solid #f9fafb', fontWeight: 500 }}>{l}</Link>
+              <Link key={p} to={p} className="ucg-ml">{l}</Link>
             ))}
-            <div style={{ padding: '12px 0 6px', color: '#9ca3af', fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Services</div>
+            <div style={{ padding: '14px 0 6px', color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Services</div>
             {services.map(s => (
-              <Link key={s.path} to={s.path} style={{ display: 'flex', gap: 12, alignItems: 'center', padding: '10px 0', borderBottom: '1px solid #f9fafb' }}>
-                <span style={{ fontSize: 20 }}>{s.icon}</span>
-                <span style={{ fontSize: 14, color: '#374151', fontWeight: 500 }}>{s.label}</span>
+              <Link key={s.path} to={s.path} className="ucg-msl">
+                <span style={{ fontSize: 18 }}>{s.icon}</span>
+                <span>{s.label}</span>
               </Link>
             ))}
-            <Link to="/contact" style={{ display: 'block', textAlign: 'center', marginTop: 16, background: '#f59e0b', color: '#0f172a', padding: '12px', borderRadius: 8, fontWeight: 700 }}>Book Now</Link>
+            <Link to="/contact" className="ucg-mob-book">Book Now</Link>
           </div>
         )}
       </nav>
-
-<style>{`
-  @media (max-width: 768px) {
-    .desktop-nav { display: none !important; }
-    .hamburger { display: flex !important; }
-
-    .container {
-      padding: 0 12px !important;
-    }
-
-    nav {
-      padding: 10px 0 !important;
-    }
-
-    a {
-      font-size: 14px;
-    }
-  }
-`}</style>
     </>
   )
 }
