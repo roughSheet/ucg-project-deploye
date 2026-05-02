@@ -6,11 +6,7 @@ function FadeIn({ children, delay = 0 }) {
   useEffect(() => {
     const el = ref.current
     const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        el.style.opacity = 1
-        el.style.transform = 'translateY(0)'
-        obs.unobserve(el)
-      }
+      if (e.isIntersecting) { el.style.opacity = 1; el.style.transform = 'translateY(0)'; obs.unobserve(el) }
     }, { threshold: 0.1 })
     obs.observe(el)
     return () => obs.disconnect()
@@ -50,43 +46,29 @@ export default function MedicalCoding() {
   return (
     <div>
       <style>{`
-        /* ── Medical Coding Page ── */
-        .mc-hero-section {
-          background: var(--gradient-primary);
-          padding-top: 140px;
-          padding-bottom: 96px;
-          text-align: center;
-        }
         .mc-why-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 64px;
           align-items: center;
         }
-        .mc-metrics-grid {
-          display: grid;
-          gap: 20px;
-        }
-        .mc-metrics-grid-inner {
+        .mc-metrics-inner {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 14px;
+          margin-bottom: 20px;
         }
-
         @media (max-width: 768px) {
           .mc-why-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
           .mc-why-img { order: -1; }
-          .mc-metrics-grid-inner {
-            grid-template-columns: 1fr 1fr !important;
-          }
         }
       `}</style>
 
-      {/* HERO — uses global gradient so it adapts to any theme */}
-      <section className="mc-hero-section">
+      {/* HERO */}
+      <section style={{ background: 'var(--gradient-primary)', paddingTop: 140, paddingBottom: 80, textAlign: 'center' }}>
         <div className="container">
           <span className="section-tag-light">Medical Coding Services</span>
           <h1 className="section-title-white" style={{ maxWidth: 680, margin: '16px auto 20px' }}>
@@ -102,20 +84,17 @@ export default function MedicalCoding() {
         </div>
       </section>
 
-      {/* QUICK STATS BAR */}
-      <section style={{ background: 'white', paddingTop: 0, paddingBottom: 0 }}>
+      {/* QUICK STATS — lifted card, NO overlap using section-with-lifted-card */}
+      <section className="section-with-lifted-card" style={{ background: 'white' }}>
         <div className="container">
-          <div style={{
+          <div className="lifted-stats-card" style={{
             background: 'white',
             borderRadius: 20,
             boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
-            padding: '32px 40px',
-            marginTop: -48,
-            position: 'relative',
-            zIndex: 10,
+            padding: '28px 36px',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: 24,
+            gap: 20,
             textAlign: 'center',
             border: '1px solid var(--border)'
           }}>
@@ -146,8 +125,7 @@ export default function MedicalCoding() {
                     width: 56, height: 56, borderRadius: 14,
                     background: 'var(--light-2)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 28, marginBottom: 16,
-                    border: '1px solid var(--border)'
+                    fontSize: 28, marginBottom: 16, border: '1px solid var(--border)'
                   }}>{s.icon}</div>
                   <h3 style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: 10, fontSize: 16 }}>{s.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.65 }}>{s.desc}</p>
@@ -158,12 +136,10 @@ export default function MedicalCoding() {
         </div>
       </section>
 
-      {/* WHY U-CGS — image above on mobile */}
+      {/* WHY U-CGS */}
       <section style={{ background: 'white' }}>
         <div className="container">
           <div className="mc-why-grid">
-
-            {/* Text side */}
             <FadeIn>
               <div>
                 <span className="section-tag">Why U-CGS Coding</span>
@@ -176,9 +152,8 @@ export default function MedicalCoding() {
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                     <div style={{
                       width: 24, height: 24, borderRadius: '50%',
-                      background: 'var(--primary)',
-                      color: 'white', display: 'flex',
-                      alignItems: 'center', justifyContent: 'center',
+                      background: 'var(--primary)', color: 'white',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: 12, flexShrink: 0, marginTop: 1
                     }}>✓</div>
                     <span style={{ color: 'var(--text-main)', fontSize: 15, lineHeight: 1.5 }}>{item}</span>
@@ -190,39 +165,23 @@ export default function MedicalCoding() {
               </div>
             </FadeIn>
 
-            {/* Metrics side — appears above text on mobile */}
             <FadeIn delay={0.2}>
-              <div className="mc-why-img mc-metrics-grid">
-                <div className="mc-metrics-grid-inner">
+              <div className="mc-why-img">
+                <div className="mc-metrics-inner">
                   {[
                     { num: '95%+', label: 'First-Pass Rate', bg: 'var(--light-2)', border: 'var(--border)', color: 'var(--primary)' },
                     { num: '40+', label: 'Specialties', bg: 'var(--light-2)', border: 'var(--border)', color: 'var(--primary-dark)' },
                     { num: '48hr', label: 'Turnaround', bg: '#fffbeb', border: '#fde68a', color: '#b45309' },
                     { num: '0%', label: 'Compliance Gaps', bg: '#f0fdf4', border: '#bbf7d0', color: '#15803d' },
                   ].map(({ num, label, bg, border, color }, i) => (
-                    <div key={i} style={{
-                      background: bg,
-                      border: `1px solid ${border}`,
-                      borderRadius: 14,
-                      padding: '24px 20px',
-                      textAlign: 'center'
-                    }}>
+                    <div key={i} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: '24px 20px', textAlign: 'center' }}>
                       <div style={{ fontWeight: 800, color, fontSize: 30 }}>{num}</div>
                       <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 6 }}>{label}</div>
                     </div>
                   ))}
                 </div>
-
-                {/* Certification badge */}
-                <div style={{
-                  background: 'var(--gradient-primary)',
-                  borderRadius: 16,
-                  padding: '24px 28px',
-                  color: 'white',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 16
-                }}>
+                {/* Cert badge */}
+                <div style={{ background: 'var(--gradient-primary)', borderRadius: 16, padding: '24px 28px', color: 'white', display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div style={{ fontSize: 40 }}>🏅</div>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>ISO 27001:2013 Certified</div>
@@ -235,8 +194,8 @@ export default function MedicalCoding() {
         </div>
       </section>
 
-      {/* SPECIALTIES MARQUEE */}
-      <section style={{ background: 'var(--light-2)', paddingTop: 48, paddingBottom: 48, overflow: 'hidden' }}>
+      {/* SPECIALTIES */}
+      <section style={{ background: 'var(--light-2)', paddingTop: 48, paddingBottom: 48 }}>
         <div className="container">
           <FadeIn>
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
@@ -248,13 +207,9 @@ export default function MedicalCoding() {
                 'Internal Medicine', 'Pediatrics', 'OB/GYN', 'Psychiatry', 'Pulmonology', 'Gastroenterology',
                 'Dermatology', 'Ophthalmology', 'Urology', 'Endocrinology'].map((s, i) => (
                 <span key={i} style={{
-                  background: 'white',
-                  border: '1px solid var(--border)',
-                  color: 'var(--primary-dark)',
-                  padding: '7px 16px',
-                  borderRadius: 24,
-                  fontSize: 13,
-                  fontWeight: 500
+                  background: 'white', border: '1px solid var(--border)',
+                  color: 'var(--primary-dark)', padding: '7px 16px',
+                  borderRadius: 24, fontSize: 13, fontWeight: 500
                 }}>{s}</span>
               ))}
             </div>

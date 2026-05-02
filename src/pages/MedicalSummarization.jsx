@@ -6,11 +6,7 @@ function FadeIn({ children, delay = 0 }) {
   useEffect(() => {
     const el = ref.current
     const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        el.style.opacity = 1
-        el.style.transform = 'translateY(0)'
-        obs.unobserve(el)
-      }
+      if (e.isIntersecting) { el.style.opacity = 1; el.style.transform = 'translateY(0)'; obs.unobserve(el) }
     }, { threshold: 0.1 })
     obs.observe(el)
     return () => obs.disconnect()
@@ -52,13 +48,6 @@ export default function MedicalSummarization() {
   return (
     <div>
       <style>{`
-        /* ── Medical Summarization Page ── */
-        .ms-hero-section {
-          background: var(--gradient-primary);
-          padding-top: 140px;
-          padding-bottom: 96px;
-          text-align: center;
-        }
         .ms-detail-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -71,14 +60,12 @@ export default function MedicalSummarization() {
           gap: 64px;
           align-items: center;
         }
-
         @media (max-width: 768px) {
           .ms-detail-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
           .ms-included { order: -1; }
-
           .ms-who-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
@@ -87,8 +74,8 @@ export default function MedicalSummarization() {
         }
       `}</style>
 
-      {/* HERO — global gradient */}
-      <section className="ms-hero-section">
+      {/* HERO */}
+      <section style={{ background: 'var(--gradient-primary)', paddingTop: 140, paddingBottom: 80, textAlign: 'center' }}>
         <div className="container">
           <span className="section-tag-light">Medical Records Summarization</span>
           <h1 className="section-title-white" style={{ maxWidth: 700, margin: '16px auto 20px' }}>
@@ -104,20 +91,17 @@ export default function MedicalSummarization() {
         </div>
       </section>
 
-      {/* TIME SAVINGS STATS BAR */}
-      <section style={{ paddingTop: 0, paddingBottom: 0, background: 'white' }}>
+      {/* TIME SAVINGS STATS — overlap-safe */}
+      <section className="section-with-lifted-card" style={{ background: 'white' }}>
         <div className="container">
-          <div style={{
+          <div className="lifted-stats-card" style={{
             background: 'white',
             borderRadius: 20,
             boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
-            padding: '32px 40px',
-            marginTop: -48,
-            position: 'relative',
-            zIndex: 10,
+            padding: '28px 36px',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: 24,
+            gap: 20,
             textAlign: 'center',
             border: '1px solid var(--border)'
           }}>
@@ -125,7 +109,7 @@ export default function MedicalSummarization() {
               { num: '20+hrs', label: 'Saved Per Case', color: 'var(--primary)' },
               { num: '48hr', label: 'Turnaround', color: 'var(--primary-dark)' },
               { num: '99%', label: 'Accuracy Rate', color: '#15803d' },
-              { num: 'HIPAA', label: 'Compliant', color: '#6d28d9' },
+              { num: 'HIPAA', label: 'Compliant', color: 'var(--accent-dark)' },
             ].map(({ num, label, color }, i) => (
               <div key={i}>
                 <div style={{ fontSize: 26, fontWeight: 800, color }}>{num}</div>
@@ -152,13 +136,7 @@ export default function MedicalSummarization() {
             {summaryTypes.map((s, i) => (
               <FadeIn key={i} delay={i * 0.08}>
                 <div className="card">
-                  <div style={{
-                    width: 56, height: 56, borderRadius: 14,
-                    background: 'var(--light-2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 28, marginBottom: 16,
-                    border: '1px solid var(--border)'
-                  }}>{s.icon}</div>
+                  <div style={{ width: 56, height: 56, borderRadius: 14, background: 'var(--light-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 16, border: '1px solid var(--border)' }}>{s.icon}</div>
                   <h3 style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: 10, fontSize: 16 }}>{s.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.65 }}>{s.desc}</p>
                 </div>
@@ -168,12 +146,10 @@ export default function MedicalSummarization() {
         </div>
       </section>
 
-      {/* WHAT'S INCLUDED + WHY CHOOSE US — image above on mobile */}
+      {/* WHY CHOOSE + INCLUDED */}
       <section style={{ background: 'white' }}>
         <div className="container">
           <div className="ms-detail-grid">
-
-            {/* Why choose us — checkpoints */}
             <FadeIn>
               <div>
                 <span className="section-tag">Why Choose Us</span>
@@ -184,13 +160,7 @@ export default function MedicalSummarization() {
                 </p>
                 {checkpoints.map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
-                    <div style={{
-                      width: 24, height: 24, borderRadius: '50%',
-                      background: 'var(--primary)',
-                      color: 'white', display: 'flex',
-                      alignItems: 'center', justifyContent: 'center',
-                      fontSize: 12, flexShrink: 0, marginTop: 1
-                    }}>✓</div>
+                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, flexShrink: 0, marginTop: 1 }}>✓</div>
                     <span style={{ color: 'var(--text-main)', fontSize: 15, lineHeight: 1.5 }}>{item}</span>
                   </div>
                 ))}
@@ -200,24 +170,12 @@ export default function MedicalSummarization() {
               </div>
             </FadeIn>
 
-            {/* What's included card — appears above on mobile */}
             <FadeIn delay={0.2}>
-              <div className="ms-included" style={{
-                background: 'var(--gradient-primary)',
-                borderRadius: 24,
-                padding: '36px 32px',
-                color: 'white'
-              }}>
+              <div className="ms-included" style={{ background: 'var(--gradient-primary)', borderRadius: 24, padding: '36px 32px', color: 'white' }}>
                 <div style={{ fontSize: 36, marginBottom: 16 }}>📝</div>
-                <h3 style={{ fontWeight: 700, fontSize: 20, marginBottom: 24 }}>
-                  What's Included in Every Summary
-                </h3>
+                <h3 style={{ fontWeight: 700, fontSize: 20, marginBottom: 24 }}>What's Included in Every Summary</h3>
                 {included.map((item, i) => (
-                  <div key={i} style={{
-                    display: 'flex', gap: 12, alignItems: 'center',
-                    padding: '12px 0',
-                    borderBottom: i < included.length - 1 ? '1px solid rgba(255,255,255,0.15)' : 'none'
-                  }}>
+                  <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'center', padding: '12px 0', borderBottom: i < included.length - 1 ? '1px solid rgba(255,255,255,0.15)' : 'none' }}>
                     <span style={{ color: 'var(--warning)', fontSize: 16, flexShrink: 0 }}>✦</span>
                     <span style={{ fontSize: 14, opacity: 0.92 }}>{item}</span>
                   </div>
@@ -232,20 +190,10 @@ export default function MedicalSummarization() {
       <section style={{ background: '#f9fafb' }}>
         <div className="container">
           <div className="ms-who-grid">
-
-            {/* Visual side — above on mobile */}
             <FadeIn>
               <div className="ms-who-img">
-                <div style={{
-                  background: 'white',
-                  borderRadius: 20,
-                  padding: '32px',
-                  border: '1px solid var(--border)',
-                  boxShadow: 'var(--shadow-soft)'
-                }}>
-                  <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 16, marginBottom: 20 }}>
-                    ⏱️ Time Saved Per Case Type
-                  </div>
+                <div style={{ background: 'white', borderRadius: 20, padding: '32px', border: '1px solid var(--border)', boxShadow: 'var(--shadow-soft)' }}>
+                  <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 16, marginBottom: 20 }}>⏱️ Time Saved Per Case Type</div>
                   {[
                     { type: 'Personal Injury', hours: '22 hrs', pct: 88 },
                     { type: 'Workers\' Comp', hours: '18 hrs', pct: 72 },
@@ -258,13 +206,7 @@ export default function MedicalSummarization() {
                         <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--primary)' }}>{hours} saved</span>
                       </div>
                       <div style={{ height: 8, background: 'var(--light-2)', borderRadius: 4, overflow: 'hidden' }}>
-                        <div style={{
-                          height: '100%',
-                          width: `${pct}%`,
-                          background: 'var(--gradient-button)',
-                          borderRadius: 4,
-                          transition: 'width 1s ease'
-                        }} />
+                        <div style={{ height: '100%', width: `${pct}%`, background: 'var(--gradient-button)', borderRadius: 4 }} />
                       </div>
                     </div>
                   ))}
@@ -272,7 +214,6 @@ export default function MedicalSummarization() {
               </div>
             </FadeIn>
 
-            {/* Text side */}
             <FadeIn delay={0.2}>
               <div>
                 <span className="section-tag">Who We Serve</span>
@@ -287,22 +228,14 @@ export default function MedicalSummarization() {
                   { icon: '🛡️', title: 'Insurance Carriers & TPAs', desc: 'Review claim validity faster with focused summaries from our RN-reviewed team.' },
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 22, alignItems: 'flex-start' }}>
-                    <div style={{
-                      width: 48, height: 48, borderRadius: 12,
-                      background: 'var(--light-2)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 22, flexShrink: 0,
-                      border: '1px solid var(--border)'
-                    }}>{item.icon}</div>
+                    <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--light-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0, border: '1px solid var(--border)' }}>{item.icon}</div>
                     <div>
                       <div style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: 4, fontSize: 15 }}>{item.title}</div>
                       <div style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.55 }}>{item.desc}</div>
                     </div>
                   </div>
                 ))}
-                <Link to="/contact" className="btn-primary" style={{ display: 'inline-block' }}>
-                  Talk to an Expert
-                </Link>
+                <Link to="/contact" className="btn-primary" style={{ display: 'inline-block' }}>Talk to an Expert</Link>
               </div>
             </FadeIn>
           </div>
@@ -310,26 +243,17 @@ export default function MedicalSummarization() {
       </section>
 
       {/* TRUST ROW */}
-      <section style={{ background: 'white', paddingTop: 48, paddingBottom: 48 }}>
+      <section style={{ background: 'white', paddingTop: 48, paddingBottom: 64 }}>
         <div className="container">
           <FadeIn>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: 16
-            }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
               {[
                 { icon: '👩‍⚕️', text: 'RN-Reviewed Summaries' },
                 { icon: '🔒', text: 'HIPAA Compliant' },
                 { icon: '🏅', text: 'ISO 27001:2013' },
                 { icon: '🔄', text: 'Revision Rounds Included' },
               ].map((b, i) => (
-                <div key={i} style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                  background: 'var(--light-2)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 12, padding: '14px 20px'
-                }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, background: 'var(--light-2)', border: '1px solid var(--border)', borderRadius: 12, padding: '14px 20px' }}>
                   <span style={{ fontSize: 22 }}>{b.icon}</span>
                   <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--primary-dark)' }}>{b.text}</span>
                 </div>
