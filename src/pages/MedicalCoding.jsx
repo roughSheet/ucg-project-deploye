@@ -46,6 +46,27 @@ export default function MedicalCoding() {
   return (
     <div>
       <style>{`
+        @keyframes mcHeroIn  { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes mcImgIn   { from{opacity:0;transform:scale(0.96)} to{opacity:1;transform:scale(1)} }
+        @keyframes pulse     { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+        .mc-hero-wrap {
+          background: var(--gradient-primary);
+          padding-top: 90px;
+          overflow: hidden;
+          position: relative;
+        }
+        .mc-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 52px;
+          align-items: center;
+          padding: 44px 24px 0;
+          position: relative; z-index: 1;
+        }
+        .mc-hero-text { order: 1; animation: mcHeroIn 0.8s ease forwards; }
+        .mc-hero-img  { order: 2; position: relative; height: 420px; animation: mcImgIn 1s ease 0.3s both; }
+
         .mc-why-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -58,7 +79,16 @@ export default function MedicalCoding() {
           gap: 14px;
           margin-bottom: 20px;
         }
+
         @media (max-width: 768px) {
+          .mc-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            padding: 28px 16px 0 !important;
+          }
+          .mc-hero-text { order: 2 !important; }
+          .mc-hero-img  { order: 1 !important; height: 220px !important; }
+          .mc-hero-float { display: none !important; }
           .mc-why-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
@@ -67,36 +97,72 @@ export default function MedicalCoding() {
         }
       `}</style>
 
-      {/* HERO */}
-      <section style={{ background: 'var(--gradient-primary)', paddingTop: 140, paddingBottom: 80, textAlign: 'center' }}>
-        <div className="container">
-          <span className="section-tag-light">Medical Coding Services</span>
-          <h1 className="section-title-white" style={{ maxWidth: 680, margin: '16px auto 20px' }}>
-            Precise Coding. Maximum Reimbursement.
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 18, maxWidth: 580, margin: '0 auto 36px', lineHeight: 1.75 }}>
-            Our certified medical coders bring accuracy, compliance, and speed to every chart — reducing denials and improving your bottom line.
-          </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn-primary">Get a Coding Quote</Link>
-            <Link to="/contact" className="btn-outline-white">Book Free Audit</Link>
+      {/* ── HERO with image ── */}
+      <section className="mc-hero-wrap">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(96,165,250,0.07) 0%, transparent 50%)', pointerEvents: 'none' }} />
+        <div className="container mc-hero-grid">
+
+          {/* Image col */}
+          <div className="mc-hero-img">
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 36, bottom: 36, borderRadius: 22, overflow: 'hidden', boxShadow: '0 28px 72px rgba(0,0,0,0.4)' }}>
+              <img
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
+                alt="Medical coding professionals"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,28,44,0.6) 0%, transparent 60%)' }} />
+            </div>
+            {/* Float stat card */}
+            <div className="mc-hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', minWidth: 160 }}>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>95%+</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>First-Pass Rate</div>
+              <div style={{ marginTop: 6, height: 4, background: 'var(--light-2)', borderRadius: 2 }}>
+                <div style={{ height: '100%', width: '95%', background: 'var(--gradient-button)', borderRadius: 2 }} />
+              </div>
+            </div>
+            {/* Float ISO card */}
+          </div>
+
+          {/* Text col */}
+          <div className="mc-hero-text">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 24, padding: '6px 16px', marginBottom: 20 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--primary-light)', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+              <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Medical Coding Services</span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(28px,4.5vw,52px)', fontWeight: 800, color: 'white', lineHeight: 1.12, marginBottom: 18, letterSpacing: '-0.5px' }}>
+              Precise Coding.<br />Maximum<br />
+              <span style={{ color: 'var(--primary-light)' }}>Reimbursement.</span>
+            </h1>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 32, maxWidth: 460 }}>
+              Our certified medical coders bring accuracy, compliance, and speed to every chart — reducing denials and improving your bottom line.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
+              <Link to="/contact" className="btn-primary">Get a Coding Quote</Link>
+              <Link to="/contact" style={{ border: '2px solid rgba(255,255,255,0.55)', color: 'white', padding: '11px 26px', borderRadius: 8, fontWeight: 600, fontSize: 15, display: 'inline-block', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
+                Book Free Audit
+              </Link>
+            </div>
+            <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+              {['🏅 ISO 27001:2013', '🔒 HIPAA Compliant', '⚕️ CPC · CCS Certified'].map((b, i) => (
+                <span key={i} style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500 }}>{b}</span>
+              ))}
+            </div>
           </div>
         </div>
+        <div style={{ height: 60 }} />
       </section>
 
-      {/* QUICK STATS — lifted card, NO overlap using section-with-lifted-card */}
+      {/* QUICK STATS */}
       <section className="section-with-lifted-card" style={{ background: 'white' }}>
         <div className="container">
           <div className="lifted-stats-card" style={{
-            background: 'white',
-            borderRadius: 20,
+            background: 'white', borderRadius: 20,
             boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
             padding: '28px 36px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: 20,
-            textAlign: 'center',
-            border: '1px solid var(--border)'
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: 20, textAlign: 'center', border: '1px solid var(--border)'
           }}>
             {metrics.map(({ num, label }, i) => (
               <div key={i}>
@@ -121,12 +187,7 @@ export default function MedicalCoding() {
             {services.map((s, i) => (
               <FadeIn key={i} delay={i * 0.08}>
                 <div className="card">
-                  <div style={{
-                    width: 56, height: 56, borderRadius: 14,
-                    background: 'var(--light-2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 28, marginBottom: 16, border: '1px solid var(--border)'
-                  }}>{s.icon}</div>
+                  <div style={{ width: 56, height: 56, borderRadius: 14, background: 'var(--light-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 16, border: '1px solid var(--border)' }}>{s.icon}</div>
                   <h3 style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: 10, fontSize: 16 }}>{s.title}</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: 14, lineHeight: 1.65 }}>{s.desc}</p>
                 </div>
@@ -150,12 +211,7 @@ export default function MedicalCoding() {
                 </p>
                 {checkpoints.map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
-                    <div style={{
-                      width: 24, height: 24, borderRadius: '50%',
-                      background: 'var(--primary)', color: 'white',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 12, flexShrink: 0, marginTop: 1
-                    }}>✓</div>
+                    <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, flexShrink: 0, marginTop: 1 }}>✓</div>
                     <span style={{ color: 'var(--text-main)', fontSize: 15, lineHeight: 1.5 }}>{item}</span>
                   </div>
                 ))}
@@ -164,7 +220,6 @@ export default function MedicalCoding() {
                 </Link>
               </div>
             </FadeIn>
-
             <FadeIn delay={0.2}>
               <div className="mc-why-img">
                 <div className="mc-metrics-inner">
@@ -180,7 +235,6 @@ export default function MedicalCoding() {
                     </div>
                   ))}
                 </div>
-                {/* Cert badge */}
                 <div style={{ background: 'var(--gradient-primary)', borderRadius: 16, padding: '24px 28px', color: 'white', display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div style={{ fontSize: 40 }}>🏅</div>
                   <div>
@@ -206,11 +260,7 @@ export default function MedicalCoding() {
               {['Cardiology', 'Orthopedics', 'Neurology', 'Oncology', 'Radiology', 'Emergency Medicine',
                 'Internal Medicine', 'Pediatrics', 'OB/GYN', 'Psychiatry', 'Pulmonology', 'Gastroenterology',
                 'Dermatology', 'Ophthalmology', 'Urology', 'Endocrinology'].map((s, i) => (
-                <span key={i} style={{
-                  background: 'white', border: '1px solid var(--border)',
-                  color: 'var(--primary-dark)', padding: '7px 16px',
-                  borderRadius: 24, fontSize: 13, fontWeight: 500
-                }}>{s}</span>
+                <span key={i} style={{ background: 'white', border: '1px solid var(--border)', color: 'var(--primary-dark)', padding: '7px 16px', borderRadius: 24, fontSize: 13, fontWeight: 500 }}>{s}</span>
               ))}
             </div>
           </FadeIn>

@@ -48,6 +48,27 @@ export default function MedicalSummarization() {
   return (
     <div>
       <style>{`
+        @keyframes msHeroIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes msImgIn  { from{opacity:0;transform:scale(0.96)} to{opacity:1;transform:scale(1)} }
+        @keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+        .ms-hero-wrap {
+          background: var(--gradient-primary);
+          padding-top: 90px;
+          overflow: hidden;
+          position: relative;
+        }
+        .ms-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 52px;
+          align-items: center;
+          padding: 44px 24px 0;
+          position: relative; z-index: 1;
+        }
+        .ms-hero-text { order: 1; animation: msHeroIn 0.8s ease forwards; }
+        .ms-hero-img  { order: 2; position: relative; height: 420px; animation: msImgIn 1s ease 0.3s both; }
+
         .ms-detail-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -60,7 +81,16 @@ export default function MedicalSummarization() {
           gap: 64px;
           align-items: center;
         }
+
         @media (max-width: 768px) {
+          .ms-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            padding: 28px 16px 0 !important;
+          }
+          .ms-hero-text { order: 2 !important; }
+          .ms-hero-img  { order: 1 !important; height: 220px !important; }
+          .ms-hero-float { display: none !important; }
           .ms-detail-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
@@ -74,36 +104,72 @@ export default function MedicalSummarization() {
         }
       `}</style>
 
-      {/* HERO */}
-      <section style={{ background: 'var(--gradient-primary)', paddingTop: 140, paddingBottom: 80, textAlign: 'center' }}>
-        <div className="container">
-          <span className="section-tag-light">Medical Records Summarization</span>
-          <h1 className="section-title-white" style={{ maxWidth: 700, margin: '16px auto 20px' }}>
-            Transform Thousands of Pages Into Clear, Actionable Summaries
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 18, maxWidth: 600, margin: '0 auto 36px', lineHeight: 1.75 }}>
-            Save 20+ hours per case. Our medical summarization experts convert complex medical records into concise, organized summaries for legal and insurance professionals.
-          </p>
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn-primary">Request a Summary</Link>
-            <Link to="/contact" className="btn-outline-white">Get Free Sample</Link>
+      {/* ── HERO with image ── */}
+      <section className="ms-hero-wrap">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(96,165,250,0.07) 0%, transparent 50%)', pointerEvents: 'none' }} />
+        <div className="container ms-hero-grid">
+
+          {/* Image col */}
+          <div className="ms-hero-img">
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 36, bottom: 36, borderRadius: 22, overflow: 'hidden', boxShadow: '0 28px 72px rgba(0,0,0,0.4)' }}>
+              <img
+                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
+                alt="Medical records summarization"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,28,44,0.6) 0%, transparent 60%)' }} />
+            </div>
+            {/* Float time savings card */}
+            <div className="ms-hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', minWidth: 170 }}>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>20+ hrs</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>Saved Per Case</div>
+              <div style={{ marginTop: 8, display: 'flex', gap: 3 }}>
+                {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#f59e0b', fontSize: 11 }}>★</span>)}
+              </div>
+            </div>
+          </div>
+
+          {/* Text col */}
+          <div className="ms-hero-text">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 24, padding: '6px 16px', marginBottom: 20 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--primary-light)', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+              <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Medical Records Summarization</span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(26px,4vw,50px)', fontWeight: 800, color: 'white', lineHeight: 1.12, marginBottom: 18, letterSpacing: '-0.5px' }}>
+              Thousands of Pages Into<br />
+              <span style={{ color: 'var(--primary-light)' }}>Clear, Actionable</span><br />
+              Summaries
+            </h1>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 32, maxWidth: 460 }}>
+              Save 20+ hours per case. Our medical summarization experts convert complex records into concise, organized summaries for legal and insurance professionals.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
+              <Link to="/contact" className="btn-primary">Request a Summary</Link>
+              <Link to="/contact" style={{ border: '2px solid rgba(255,255,255,0.55)', color: 'white', padding: '11px 26px', borderRadius: 8, fontWeight: 600, fontSize: 15, display: 'inline-block', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
+                Get Free Sample
+              </Link>
+            </div>
+            <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+              {['👩‍⚕️ RN Reviewed', '🔒 HIPAA Compliant', '🏅 ISO 27001:2013'].map((b, i) => (
+                <span key={i} style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500 }}>{b}</span>
+              ))}
+            </div>
           </div>
         </div>
+        <div style={{ height: 60 }} />
       </section>
 
-      {/* TIME SAVINGS STATS — overlap-safe */}
+      {/* TIME SAVINGS STATS */}
       <section className="section-with-lifted-card" style={{ background: 'white' }}>
         <div className="container">
           <div className="lifted-stats-card" style={{
-            background: 'white',
-            borderRadius: 20,
+            background: 'white', borderRadius: 20,
             boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
             padding: '28px 36px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-            gap: 20,
-            textAlign: 'center',
-            border: '1px solid var(--border)'
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+            gap: 20, textAlign: 'center', border: '1px solid var(--border)'
           }}>
             {[
               { num: '20+hrs', label: 'Saved Per Case', color: 'var(--primary)' },
@@ -169,7 +235,6 @@ export default function MedicalSummarization() {
                 </Link>
               </div>
             </FadeIn>
-
             <FadeIn delay={0.2}>
               <div className="ms-included" style={{ background: 'var(--gradient-primary)', borderRadius: 24, padding: '36px 32px', color: 'white' }}>
                 <div style={{ fontSize: 36, marginBottom: 16 }}>📝</div>
@@ -213,7 +278,6 @@ export default function MedicalSummarization() {
                 </div>
               </div>
             </FadeIn>
-
             <FadeIn delay={0.2}>
               <div>
                 <span className="section-tag">Who We Serve</span>

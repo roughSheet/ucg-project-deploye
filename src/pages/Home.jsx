@@ -252,15 +252,6 @@ export default function Home() {
                 {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#f59e0b', fontSize: 11 }}>★</span>)}
               </div>
             </div>
-            <div className="hero-float" style={{ position: 'absolute', top: 20, right: 8, background: 'white', borderRadius: 14, padding: '12px 16px', boxShadow: '0 12px 40px rgba(0,0,0,0.18)', animation: 'heroImgIn 1s ease 0.8s both' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-                <div style={{ width: 34, height: 34, borderRadius: 9, background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🏅</div>
-                <div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--text-main)' }}>ISO Certified</div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>27001:2013</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Text col — order:2 on mobile so it appears below image */}

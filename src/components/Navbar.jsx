@@ -288,7 +288,7 @@ export default function Navbar() {
             <span style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>+91 88666 42472</span>
           </div>
 
-          {/* Right: trust pills */}
+          {/* Right: trust pills
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span className="ucg-topbar-pill">
               <span className="ucg-topbar-accent" />
@@ -298,7 +298,7 @@ export default function Navbar() {
               <span className="ucg-topbar-accent" />
               HIPAA Compliant
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
 

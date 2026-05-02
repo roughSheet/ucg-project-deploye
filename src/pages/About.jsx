@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import about11 from '../assets/about11.jpg'
+import about12 from '../assets/about12.jpg'
+import about13 from '../assets/about13.jpg'
 
 function FadeIn({ children, delay = 0 }) {
   const ref = useRef(null)
@@ -49,6 +52,32 @@ export default function About() {
   return (
     <div>
       <style>{`
+        @keyframes aboutHeroIn { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes aboutImgIn  { from{opacity:0;transform:scale(0.96)} to{opacity:1;transform:scale(1)} }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+        .about-hero-wrap {
+          background: var(--gradient-primary);
+          padding-top: 90px;
+          overflow: hidden;
+          position: relative;
+        }
+        .about-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 52px;
+          align-items: center;
+          padding: 44px 24px 0;
+          position: relative;
+          z-index: 1;
+        }
+        .about-hero-text { order: 1; animation: aboutHeroIn 0.8s ease forwards; }
+        .about-hero-img-col {
+          order: 2;
+          position: relative;
+          height: 420px;
+          animation: aboutImgIn 1s ease 0.3s both;
+        }
         .about-story-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -60,7 +89,6 @@ export default function About() {
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 28px;
         }
-        /* Timeline vertical line */
         .timeline-line {
           position: absolute;
           left: 28px; top: 0; bottom: 0;
@@ -69,6 +97,21 @@ export default function About() {
         }
 
         @media (max-width: 768px) {
+          .about-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+            padding: 28px 16px 0 !important;
+          }
+          .about-hero-text { order: 2 !important; }
+          .about-hero-img-col {
+            order: 1 !important;
+            height: 220px !important;
+          }
+          .about-hero-img-col .ah-main-img {
+            border-radius: 14px !important;
+            top:0 !important; left:0 !important; right:0 !important; bottom:0 !important;
+          }
+          .about-hero-float { display: none !important; }
           .about-story-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
@@ -78,18 +121,62 @@ export default function About() {
         }
       `}</style>
 
-      {/* HERO */}
-      <section style={{ background: 'var(--gradient-primary)', paddingTop: 140, paddingBottom: 96, textAlign: 'center' }}>
-        <div className="container">
-          <span className="section-tag-amber">About Us</span>
-          <h1 className="section-title-white" style={{ maxWidth: 700, margin: '12px auto 20px' }}>
-            A Decade of Trusted Outsourcing Excellence
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 18, lineHeight: 1.75, maxWidth: 620, margin: '0 auto 36px' }}>
-            U-Connect Global Services is a dynamic team of business solutions experts committed to empowering clients to focus on their core strengths.
-          </p>
-          <Link to="/contact" className="btn-primary">Work With Us</Link>
+      {/* ── HERO with image (matches Home style) ── */}
+      <section className="about-hero-wrap">
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 15% 85%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(96,165,250,0.08) 0%, transparent 50%)', pointerEvents: 'none' }} />
+        <div className="container about-hero-grid">
+
+          {/* Image col */}
+          <div className="about-hero-img-col">
+            <div className="ah-main-img" style={{ position: 'absolute', top: 0, left: 0, right: 36, bottom: 36, borderRadius: 22, overflow: 'hidden', boxShadow: '0 28px 72px rgba(0,0,0,0.4)' }}>
+              <img
+                src={about12}
+                alt="U-CGS professional team"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,28,44,0.55) 0%, transparent 60%)' }} />
+            </div>
+            {/* Float badge — 500+ clients */}
+            <div className="about-hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', minWidth: 160 }}>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>500+</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>Happy Clients</div>
+              <div style={{ display: 'flex', gap: 3, marginTop: 5 }}>
+                {[...Array(5)].map((_, i) => <span key={i} style={{ color: '#f59e0b', fontSize: 11 }}>★</span>)}
+              </div>
+            </div>
+          </div>
+
+          {/* Text col */}
+          <div className="about-hero-text">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 24, padding: '6px 16px', marginBottom: 20 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#fbbf24', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+              <span style={{ color: '#fbbf24', fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>About U-CGS</span>
+            </div>
+            <h1 style={{ fontSize: 'clamp(28px,4.5vw,52px)', fontWeight: 800, color: 'white', lineHeight: 1.12, marginBottom: 18, letterSpacing: '-0.5px' }}>
+              A Decade of<br />Trusted Outsourcing<br />
+              <span style={{ color: 'var(--primary-light)' }}>Excellence</span>
+            </h1>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 32, maxWidth: 460 }}>
+              U-Connect Global Services is a dynamic team of business solutions experts committed to empowering clients to focus on their core strengths.
+            </p>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
+              <Link to="/contact" className="btn-primary">Work With Us</Link>
+              <Link to="/record-retrieval-services" style={{ border: '2px solid rgba(255,255,255,0.55)', color: 'white', padding: '11px 26px', borderRadius: 8, fontWeight: 600, fontSize: 15, display: 'inline-block', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
+                Our Services
+              </Link>
+            </div>
+            <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+              {['🏅 ISO 27001:2013', '🔒 HIPAA Compliant', '✅ 10+ Years'].map((b, i) => (
+                <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 500 }}>{b}</span>
+              ))}
+            </div>
+          </div>
         </div>
+
+        {/* Bottom wave spacer so image bleeds into next section nicely */}
+        <div style={{ height: 60 }} />
       </section>
 
       {/* MISSION & VISION */}
@@ -122,24 +209,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* WHO WE ARE — with image */}
+      {/* WHO WE ARE */}
       <section style={{ background: 'var(--light)' }}>
         <div className="container">
           <div className="about-story-grid">
-
-            {/* Image side */}
             <FadeIn delay={0.1}>
               <div className="about-story-img" style={{ position: 'relative' }}>
                 <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 56px rgba(0,0,0,0.14)' }}>
                   <img
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80"
+                    src={about11}
                     alt="Professional team at work"
                     style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }}
                   />
-                  {/* Overlay gradient */}
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, color-mix(in srgb, var(--navy) 60%, transparent) 0%, transparent 55%)' }} />
                 </div>
-                {/* Float badge */}
                 <div className="about-float-badge" style={{
                   position: 'absolute', bottom: 20, right: -16,
                   background: 'var(--gradient-primary)',
@@ -151,8 +234,6 @@ export default function About() {
                 </div>
               </div>
             </FadeIn>
-
-            {/* Text side */}
             <FadeIn>
               <div>
                 <span className="section-tag">Our Story</span>
@@ -164,7 +245,6 @@ export default function About() {
                 <p className="section-sub" style={{ marginBottom: 32 }}>
                   We take pride not in claiming to be the best, but in delivering exceptional, cost-effective, and professional solutions that exceed expectations.
                 </p>
-                {/* Stats row — theme-aware */}
                 <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                   {[
                     { num: '10+', label: 'Years Experience', bg: 'var(--primary)' },
@@ -183,11 +263,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* GLOBAL PRESENCE — with image */}
+      {/* GLOBAL PRESENCE */}
       <section style={{ background: 'white' }}>
         <div className="container">
           <div className="about-story-grid">
-            {/* Text side */}
             <FadeIn>
               <div>
                 <span className="section-tag">Global Presence</span>
@@ -228,12 +307,10 @@ export default function About() {
                 </div>
               </div>
             </FadeIn>
-
-            {/* Image side */}
             <FadeIn delay={0.2}>
               <div className="about-story-img" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 56px rgba(0,0,0,0.12)' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80"
+                  src={about13}
                   alt="Global business team"
                   style={{ width: '100%', height: 400, objectFit: 'cover', display: 'block' }}
                 />
@@ -309,7 +386,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* TEAM — with image */}
+      {/* TEAM */}
       <section style={{ background: '#f9fafb' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
@@ -321,8 +398,6 @@ export default function About() {
               </p>
             </FadeIn>
           </div>
-
-          {/* Team image banner */}
           <FadeIn>
             <div style={{ borderRadius: 20, overflow: 'hidden', marginBottom: 40, boxShadow: '0 12px 40px rgba(0,0,0,0.1)', position: 'relative', height: 260 }}>
               <img
@@ -337,7 +412,6 @@ export default function About() {
               </div>
             </div>
           </FadeIn>
-
           <div className="about-team-grid">
             {team.map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
@@ -359,7 +433,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US — image section */}
+      {/* WHY CHOOSE US */}
       <section style={{ background: 'white' }}>
         <div className="container">
           <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 300 }}>
