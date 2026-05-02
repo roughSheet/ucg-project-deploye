@@ -44,12 +44,12 @@ export default function Chatbot() {
           border: '1px solid #e5e7eb'
         }}>
           {/* Header — close button always visible: dark bg + white X */}
-          <div style={{ background: 'linear-gradient(135deg,#0f766e,#0d9488)', padding: '16px 20px' }}>
+          <div style={{ background: 'linear-gradient(135deg,var(--primary-dark),var(--primary))', padding: '16px 20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 15, color: 'white' }}>U-CGS Assistant</div>
                 <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', display: 'flex', alignItems: 'center', gap: 5, marginTop: 2 }}>
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#4ade80', display: 'inline-block' }} />
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--success)', display: 'inline-block' }} />
                   Online
                 </div>
               </div>
@@ -75,7 +75,7 @@ export default function Chatbot() {
                 <div style={{
                   maxWidth: '80%', padding: '10px 14px',
                   borderRadius: m.from === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                  background: m.from === 'user' ? 'linear-gradient(135deg,#0f766e,#0d9488)' : 'white',
+                  background: m.from === 'user' ? 'linear-gradient(135deg,var(--primary-dark),var(--primary))' : 'white',
                   color: m.from === 'user' ? 'white' : '#374151',
                   fontSize: 13, lineHeight: 1.55,
                   boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
@@ -92,13 +92,13 @@ export default function Chatbot() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {QA.map((qa, i) => (
                 <button key={i} onClick={() => sendMessage(qa.q)} style={{
-                  background: '#f0fdfa', border: '1px solid #99f6e4',
-                  color: '#0f766e', borderRadius: 20, padding: '5px 12px',
+                  background: 'var(--bg-soft)', border: '1px solid var(--border)',
+                  color: 'var(--primary-dark)', borderRadius: 20, padding: '5px 12px',
                   fontSize: 11, cursor: 'pointer', fontWeight: 600,
                   transition: 'all 0.2s'
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#ccfbf1'; e.currentTarget.style.borderColor = '#0d9488' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#f0fdfa'; e.currentTarget.style.borderColor = '#99f6e4' }}>
+                onMouseEnter={e => { e.currentTarget.style.background = '#ccfbf1'; e.currentTarget.style.borderColor = 'var(--primary)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-soft)'; e.currentTarget.style.borderColor = 'var(--border)' }}>
                   {qa.q}
                 </button>
               ))}
@@ -113,11 +113,11 @@ export default function Chatbot() {
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
               placeholder="Type a message..."
               style={{ flex: 1, border: '1.5px solid #e5e7eb', borderRadius: 10, padding: '9px 14px', fontSize: 13, outline: 'none', fontFamily: 'inherit' }}
-              onFocus={e => e.target.style.borderColor = '#0d9488'}
+              onFocus={e => e.target.style.borderColor = 'var(--primary)'}
               onBlur={e => e.target.style.borderColor = '#e5e7eb'}
             />
             <button onClick={() => sendMessage()} style={{
-              background: 'linear-gradient(135deg,#0f766e,#0d9488)', color: 'white',
+              background: 'var(--gradient-button)', color: 'white',
               border: 'none', borderRadius: 10, padding: '9px 14px',
               cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>➤</button>
@@ -128,7 +128,7 @@ export default function Chatbot() {
       {/* Toggle bubble */}
       <button onClick={() => setOpen(!open)} style={{
         width: 58, height: 58, borderRadius: '50%',
-        background: 'linear-gradient(135deg,#0f766e,#0d9488)',
+        background: 'linear-gradient(135deg,var(--primary-dark),var(--primary))',
         border: '3px solid white',
         cursor: 'pointer', color: 'white', fontSize: 24,
         boxShadow: '0 8px 28px rgba(13,148,136,0.5)',
