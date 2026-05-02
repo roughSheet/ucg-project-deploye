@@ -50,7 +50,7 @@ export default function About() {
     <div>
       {/* HERO */}
       <section style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1a56db 70%, #3b82f6 100%)',
+        background: 'var(--gradient-primary)',
         paddingTop: 140, paddingBottom: 96, textAlign: 'center'
       }}>
         <div className="container">
@@ -79,7 +79,7 @@ export default function About() {
                   <div style={{ width: 64, height: 64, borderRadius: 16, background: `${item.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, margin: '0 auto 20px' }}>
                     {item.icon}
                   </div>
-                  <h3 style={{ fontWeight: 700, color: '#0f172a', fontSize: 20, marginBottom: 12 }}>{item.title}</h3>
+                  <h3 style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 20, marginBottom: 12 }}>{item.title}</h3>
                   <div className="gradient-line" style={{ margin: '0 auto 16px' }} />
                   <p style={{ color: '#6b7280', lineHeight: 1.7, fontSize: 15 }}>{item.text}</p>
                 </div>
@@ -90,7 +90,7 @@ export default function About() {
       </section>
 
       {/* WHO WE ARE */}
-      <section style={{ background: '#f9fafb' }}>
+      <section style={{ background: 'var(--light)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 72, alignItems: 'center' }}>
             <FadeIn>

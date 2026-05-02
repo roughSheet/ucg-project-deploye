@@ -261,15 +261,17 @@ export default function Navbar() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="ucg-mob-menu">
-            {[['/', 'Home'], ['/about', 'About Us'], ['/blogs', 'Blogs'], ['/contact', 'Contact']].map(([p, l]) => (
+            {[
+              ['/', 'Home'],
+              ['/about', 'About'],
+              ['/record-retrieval-services', 'Record Retrieval'],
+              ['/medical-billing-coding', 'Medical Coding'],
+              ['/revenue-cycle-management', 'RCM'],
+              ['/medical-records-summarization', 'Summarization'],
+              ['/blogs', 'Blogs'],
+              ['/contact', 'Contact'],
+            ].map(([p, l]) => (
               <Link key={p} to={p} className="ucg-ml">{l}</Link>
-            ))}
-            <div style={{ padding: '14px 0 6px', color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Services</div>
-            {services.map(s => (
-              <Link key={s.path} to={s.path} className="ucg-msl">
-                <span style={{ fontSize: 18 }}>{s.icon}</span>
-                <span>{s.label}</span>
-              </Link>
             ))}
             <Link to="/contact" className="ucg-mob-book">Book Now</Link>
           </div>

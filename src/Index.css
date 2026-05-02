@@ -2,107 +2,319 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ═══════════════════════════════════════════════════
+   GLOBAL THEME VARIABLES
+   To switch themes: change ONLY this :root block.
+   Every page, component, and button reads from here.
+   ═══════════════════════════════════════════════════ */
 :root {
-  /* Navy/blue professional theme */
-  --primary: #2563eb;
-  --primary-dark: #1e40af;
+  /* ── THEME: Ocean Blue (default) ──────────────────
+     Other themes — just paste one of these blocks:
+
+     EMERALD EXECUTIVE:
+     --primary: #059669; --primary-dark: #047857; --primary-light: #34d399;
+     --accent: #0891b2; --accent-dark: #0e7490;
+     --navy: #064e3b; --navy-2: #065f46;
+     --gradient-primary: linear-gradient(135deg, #064e3b 0%, #065f46 55%, #059669 100%);
+     --gradient-button: linear-gradient(135deg, #059669, #34d399);
+
+     ROYAL PURPLE:
+     --primary: #7c3aed; --primary-dark: #6d28d9; --primary-light: #a78bfa;
+     --accent: #ec4899; --accent-dark: #db2777;
+     --navy: #1e1b4b; --navy-2: #312e81;
+     --gradient-primary: linear-gradient(135deg, #1e1b4b 0%, #312e81 55%, #7c3aed 100%);
+     --gradient-button: linear-gradient(135deg, #7c3aed, #a78bfa);
+
+     SLATE & AMBER:
+     --primary: #f59e0b; --primary-dark: #d97706; --primary-light: #fcd34d;
+     --accent: #64748b; --accent-dark: #475569;
+     --navy: #0f172a; --navy-2: #1e293b;
+     --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #d97706 100%);
+     --gradient-button: linear-gradient(135deg, #d97706, #fcd34d);
+
+     ROSE & NAVY:
+     --primary: #e11d48; --primary-dark: #be123c; --primary-light: #fb7185;
+     --accent: #0ea5e9; --accent-dark: #0284c7;
+     --navy: #1c0b1a; --navy-2: #3b0f2f;
+     --gradient-primary: linear-gradient(135deg, #1c0b1a 0%, #3b0f2f 55%, #e11d48 100%);
+     --gradient-button: linear-gradient(135deg, #e11d48, #fb7185);
+  ──────────────────────────────────────────────── */
+
+  /* PRIMARY COLORS — change these 3 to repaint everything */
+/* earlier colour for me to switch back to if needed:
+
+  --primary:       #2563eb;
+  --primary-dark:  #1e40af;
   --primary-light: #60a5fa;
-  --accent: #06b6d4;
+
+  */
+  /* trying below*/
+
+     --primary: #7c3aed; --primary-dark: #6d28d9; --primary-light: #a78bfa;
+     --accent: #ec4899; --accent-dark: #db2777;
+     --navy: #1e1b4b; --navy-2: #312e81;
+     --gradient-primary: linear-gradient(135deg, #1e1b4b 0%, #312e81 55%, #7c3aed 100%);
+     --gradient-button: linear-gradient(135deg, #7c3aed, #a78bfa);
+  /* ACCENT — used for btn-secondary and highlights */
+  /* earlier colour for me to switch back to if needed:
+  --accent:      #06b6d4;
   --accent-dark: #0891b2;
-  --navy: #0b1c2c;
+  */
+
+
+  /* DARK BG — hero, navbar, footer */
+
+  /* earlier colour for me to switch back to if needed:
+  --navy:   #0b1c2c;
   --navy-2: #1f3c5a;
+  */
 
-  --dark: #0f172a;
-  --dark-2: #1e293b;
-  --text: #374151;
-  --text-light: #6b7280;
-  --light: #f9fafb;
-  --light-2: #eff6ff;   /* light blue tint */
-  --white: #ffffff;
 
-/* SURFACES */
-  --bg-main: #ffffff;
-  --bg-soft: #f8fbff;
-  --bg-dark: #0f172a;
-  --bg-dark-2: #1e293b;
+  /* GRADIENTS — computed from above values */
 
-  /* TEXT */
-  --text-main: #0f172a;
+  /* earlier colour for me to switch back to if needed:
+  --gradient-primary: linear-gradient(135deg, #0b1c2c 0%, #1f3c5a 55%, #1d6fb8 100%);
+  --gradient-button:  linear-gradient(135deg, #1d6fb8, #60a5fa);
+  */
+
+
+  /* ── SURFACES (rarely need changing) ── */
+  --bg-main:    #ffffff;
+  --bg-soft:    #f8fbff;
+  --bg-dark:    var(--navy);
+  --bg-dark-2:  var(--navy-2);
+  --light:      #f9fafb;
+  --light-2:    #eff6ff;   /* light tint — auto-tints with theme if you swap */
+
+  /* ── TEXT ── */
+  --text:       #374151;
+  --text-main:  #0f172a;
   --text-muted: #64748b;
   --text-light: rgba(255,255,255,0.7);
-  --ucg-mob-menu: rgba(255,255,255,0.1);
 
-  /* BORDER */
-  --border: #e2e8f0;
+  /* ── BORDERS ── */
+  --border:      #e2e8f0;
   --border-soft: #e5e7eb;
 
-  /* STATUS */
+  /* ── STATUS ── */
   --success: #22c55e;
   --warning: #f59e0b;
+  --error:   #ef4444;
 
-  /* GRADIENTS */
-  --gradient-primary: linear-gradient(135deg, #0b1c2c 0%, #1f3c5a 55%, #1d6fb8 100%);
-  --gradient-button: linear-gradient(135deg, #1d6fb8, #60a5fa);
-
-  /* SHADOW */
-  --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+  /* ── SHADOWS ── */
+  --shadow-soft:   0 4px 20px rgba(0,0,0,0.08);
   --shadow-strong: 0 20px 60px rgba(0,0,0,0.2);
-
-
 }
 
-body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+/* ═══════════════════════════════════
+   BASE
+   ═══════════════════════════════════ */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
 html { scroll-behavior: smooth; }
 a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
 
-/* ── Buttons ── */
+/* ═══════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+section { padding: 88px 0; overflow: hidden; }
+
+/* ═══════════════════════════════════
+   BUTTONS
+   All use --primary, --accent so they
+   repaint when you swap the theme.
+   ═══════════════════════════════════ */
 .btn-primary {
   background: var(--primary);
   color: white !important;
-  padding: 13px 30px; border-radius: 8px;
-  font-weight: 700; font-size: 15px; border: none;
-  cursor: pointer; transition: all 0.3s; display: inline-block;
+  padding: 13px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
 }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,111,184,0.4); }
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
 
 .btn-secondary {
-  background: var(--accent); color: white !important;
-  padding: 13px 30px; border-radius: 8px;
-  font-weight: 700; font-size: 15px; border: none;
-  cursor: pointer; transition: all 0.3s; display: inline-block;
+  background: var(--accent);
+  color: white !important;
+  padding: 13px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
 }
-.btn-secondary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,165,233,0.4); }
+.btn-secondary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
 
 .btn-outline-white {
-  border: 2px solid rgba(255,255,255,0.7); color: white !important;
-  padding: 11px 28px; border-radius: 8px; font-weight: 600;
-  font-size: 15px; background: transparent; cursor: pointer;
-  transition: all 0.3s; display: inline-block;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: white !important;
+  padding: 11px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
 }
-.btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: white; transform: translateY(-2px); }
+.btn-outline-white:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: white;
+  transform: translateY(-2px);
+}
 
-/* ── Tags ── */
+/* ═══════════════════════════════════
+   TAGS / BADGES
+   ═══════════════════════════════════ */
 .section-tag {
-  display: inline-block; background: rgba(29,111,184,0.1);
-  color: var(--primary); font-size: 12px; font-weight: 700;
-  letter-spacing: 1.8px; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 20px; margin-bottom: 14px;
+  display: inline-block;
+  background: rgba(37,99,235,0.1);   /* fallback — browsers that don't support color-mix */
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
 }
 
-/* ── Typography ── */
-.section-title { font-size: clamp(26px,4vw,42px); font-weight: 800; color: var(--dark); line-height: 1.18; margin-bottom: 16px; letter-spacing: -0.5px; }
-.section-title-white { font-size: clamp(26px,4vw,42px); font-weight: 800; color: white; line-height: 1.18; margin-bottom: 16px; letter-spacing: -0.5px; }
-.section-sub { font-size: 17px; color: var(--text-light); line-height: 1.75; max-width: 620px; }
+.section-tag-amber {
+  display: inline-block;
+  background: rgba(245,158,11,0.15);
+  color: #fbbf24;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-section { padding: 88px 0; overflow: hidden; }
+.section-tag-light {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
 
-/* ── Cards ── */
-.card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
-.card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+/* ═══════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════ */
+.section-title {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.18;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.section-title-white {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.18;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+.section-sub {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 620px;
+}
 
-.gradient-line { height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 2px; width: 60px; margin-bottom: 20px; }
+/* ═══════════════════════════════════
+   CARDS
+   ═══════════════════════════════════ */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
 
-@media (max-width: 768px) { section { padding: 52px 0; } .hide-mobile { display: none !important; } .container { padding: 0 14px !important; } }
+/* ═══════════════════════════════════
+   GRADIENT ACCENT LINE
+   ═══════════════════════════════════ */
+.gradient-line {
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+  width: 60px;
+  margin-bottom: 20px;
+}
 
-img { max-width: 100%; height: auto; display: block; }
+/* ═══════════════════════════════════
+   SERVICE PAGE SHARED UTILITIES
+   These classes are used across all
+   4 service pages for consistency.
+   ═══════════════════════════════════ */
+
+/* Generic 2-col service layout */
+.service-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Force image/card above text on mobile */
+@media (max-width: 768px) {
+  .service-2col {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .service-2col .service-img-col {
+    order: -1;
+  }
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE GLOBALS
+   ═══════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding: 52px 0; }
+  .hide-mobile { display: none !important; }
+  .container { padding: 0 14px !important; }
+}
