@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/newlogo.png'
 
 const services = [
   { label: 'Record Retrieval Services', path: '/record-retrieval-services', icon: '📋' },
@@ -28,7 +28,6 @@ export default function Navbar() {
       <style>{`
         /* ── TOP BAR ── */
         .ucg-top-bar {
-          /* Accent gradient using theme variables */
           background: linear-gradient(90deg, var(--navy) 0%, var(--navy-2) 40%, color-mix(in srgb, var(--primary) 40%, var(--navy-2)) 100%);
           color: rgba(255,255,255,0.82);
           font-size: 12px;
@@ -37,12 +36,10 @@ export default function Navbar() {
           top: 0; left: 0; right: 0;
           z-index: 1001;
           transition: transform 0.3s ease;
-          /* Left accent line using primary color */
           border-bottom: 1px solid color-mix(in srgb, var(--primary) 35%, transparent);
         }
         .ucg-top-bar.hidden { transform: translateY(-100%); }
 
-        /* Pill badges inside top bar */
         .ucg-topbar-pill {
           display: inline-flex;
           align-items: center;
@@ -60,14 +57,6 @@ export default function Navbar() {
           color: color-mix(in srgb, var(--primary) 40%, transparent);
           margin: 0 8px;
         }
-        .ucg-topbar-accent {
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--primary-light);
-          display: inline-block;
-          margin-right: 2px;
-          box-shadow: 0 0 6px color-mix(in srgb, var(--primary-light) 60%, transparent);
-        }
 
         /* ── MAIN NAV ── */
         .ucg-nav {
@@ -82,10 +71,10 @@ export default function Navbar() {
           padding: 14px 0;
         }
         .ucg-nav.scrolled {
-          background: rgba(var(--navy-rgb, 11,28,44), 0.97);
+          background: rgba(11,28,44, 0.97);
           backdrop-filter: blur(16px);
           top: 0;
-          padding: 10px 0;
+          padding: 8px 0;
           box-shadow: 0 2px 20px rgba(0,0,0,0.3);
         }
 
@@ -100,34 +89,26 @@ export default function Navbar() {
           box-sizing: border-box;
         }
 
+        /* LOGO — image only, no text */
         .ucg-logo {
           display: flex;
           align-items: center;
-          gap: 9px;
           text-decoration: none;
           flex-shrink: 0;
         }
         .ucg-logo img {
-          width: 40px; height: 40px;
-          border-radius: 8px;
+          height: 56px;
+          width: auto;
           object-fit: contain;
+          /* White pill background so logo is readable on dark nav */
           background: white;
-          padding: 2px;
-          flex-shrink: 0;
+          border-radius: 12px;
+          padding: 6px 14px;
+          display: block;
+          transition: box-shadow 0.2s;
         }
-        .ucg-logo-name {
-          font-weight: 800;
-          font-size: 16px;
-          color: white;
-          white-space: nowrap;
-          line-height: 1.2;
-        }
-        .ucg-logo-sub {
-          font-size: 9px;
-          color: var(--primary-light);
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          opacity: 0.8;
+        .ucg-logo:hover img {
+          box-shadow: 0 4px 16px rgba(255,255,255,0.25);
         }
 
         .ucg-links {
@@ -143,7 +124,7 @@ export default function Navbar() {
           color: rgba(255,255,255,0.82);
           font-size: 13px;
           font-weight: 500;
-          padding: 6px 8px;
+          padding: 6px 9px;
           border-radius: 6px;
           text-decoration: none;
           white-space: nowrap;
@@ -161,7 +142,7 @@ export default function Navbar() {
         .ucg-book {
           background: var(--primary);
           color: white !important;
-          padding: 8px 16px;
+          padding: 8px 18px;
           border-radius: 7px;
           font-weight: 700;
           font-size: 13px;
@@ -215,19 +196,6 @@ export default function Navbar() {
           transition: color 0.2s;
         }
         .ucg-ml:hover, .ucg-ml.active { color: var(--primary-light); }
-        .ucg-msl {
-          display: flex;
-          gap: 12px;
-          align-items: center;
-          padding: 11px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.07);
-          text-decoration: none;
-          color: rgba(255,255,255,0.75);
-          font-size: 14px;
-          font-weight: 500;
-          transition: color 0.2s;
-        }
-        .ucg-msl:hover { color: var(--primary-light); }
         .ucg-mob-book {
           display: block;
           text-align: center;
@@ -242,15 +210,6 @@ export default function Navbar() {
           transition: background 0.2s;
         }
         .ucg-mob-book:hover { background: var(--primary-dark); }
-        .ucg-mob-section-label {
-          padding: 14px 0 6px;
-          color: var(--primary-light);
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          opacity: 0.7;
-        }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
@@ -260,9 +219,7 @@ export default function Navbar() {
         @media (max-width: 480px) {
           .ucg-top-bar { font-size: 10.5px; padding: 5px 0; }
           .ucg-nav.not-scrolled { top: 30px; }
-          .ucg-logo img { width: 34px; height: 34px; }
-          .ucg-logo-name { font-size: 14px; }
-          .ucg-topbar-pill { display: none; }
+          .ucg-logo img { height: 44px; padding: 5px 10px; border-radius: 10px; }
         }
       `}</style>
 
@@ -273,7 +230,6 @@ export default function Navbar() {
           display: 'flex', justifyContent: 'space-between',
           alignItems: 'center', flexWrap: 'wrap', gap: 6
         }}>
-          {/* Left: contact info */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 0, flexWrap: 'wrap' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
               <span>📧</span>
@@ -287,31 +243,15 @@ export default function Navbar() {
             <span className="ucg-topbar-sep">|</span>
             <span style={{ color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>+91 88666 42472</span>
           </div>
-
-          {/* Right: trust pills
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span className="ucg-topbar-pill">
-              <span className="ucg-topbar-accent" />
-              ISO 27001:2013
-            </span>
-            <span className="ucg-topbar-pill">
-              <span className="ucg-topbar-accent" />
-              HIPAA Compliant
-            </span>
-          </div> */}
         </div>
       </div>
 
       {/* ── MAIN NAV ── */}
       <nav className={`ucg-nav ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
         <div className="ucg-inner">
-          {/* Logo */}
+          {/* Logo — image only */}
           <Link to="/" className="ucg-logo">
-            <img src={logo} alt="U-CGS Logo" />
-            <div>
-              <div className="ucg-logo-name">U-Connect Global</div>
-              <div className="ucg-logo-sub">Services</div>
-            </div>
+            <img src={logo} alt="U-Connect Global Services" />
           </Link>
 
           {/* Desktop links */}
@@ -352,7 +292,7 @@ export default function Navbar() {
               ['/blogs', 'Blogs'],
               ['/contact', 'Contact'],
             ].map(([p, l]) => (
-              <Link key={p} to={p} className="ucg-ml">{l}</Link>
+              <Link key={p} to={p} className={`ucg-ml ${isActive(p) ? 'active' : ''}`}>{l}</Link>
             ))}
             <Link to="/contact" className="ucg-mob-book">📅 Book a Free Consultation</Link>
           </div>

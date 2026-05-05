@@ -26,26 +26,73 @@ function FadeIn({ children, delay = 0 }) {
 }
 
 const team = [
-  { name: 'Leadership Team', role: 'Strategy & Vision', icon: '🎯', desc: 'Guided by experienced professionals with close to a decade of outsourcing expertise across Healthcare, Legal, and Insurance sectors.' },
-  { name: 'Operations Team', role: 'Service Delivery', icon: '⚙️', desc: 'Dedicated operations specialists ensuring seamless delivery, quality assurance, and on-time performance for every client.' },
-  { name: 'Technology Team', role: 'Innovation & Security', icon: '🔐', desc: 'ISO 27001:2013 certified security professionals maintaining the highest standards of data protection and compliance.' },
+  { name: 'Leadership Team', role: 'Strategy & Vision', icon: '🎯', desc: 'Our management team brings diverse expertise and deep industry knowledge, with experience in international markets—enabling us to understand and address the unique global needs of our clients.' },
+  { name: 'Operations Team', role: 'Service Delivery', icon: '⚙️', desc: 'Each process is overseen by experienced team leaders and dedicated project managers to ensure smooth execution and maintain consistent quality at every stage.' },
+  { name: 'Technology Team', role: 'Innovation & Security', icon: '🔐', desc: 'ISO 27001:2013 certified security professionals. Data transfer is protected through state-of-the-art hardware firewalls and VPN connections with biometric facility access.' },
 ]
 
 const values = [
-  { icon: '🎯', title: 'Client-Centric', desc: 'Every decision we make centers around delivering maximum value to our clients.' },
-  { icon: '🔒', title: 'Security First', desc: 'ISO 27001:2013 certified. Your data security is non-negotiable for us.' },
-  { icon: '⚡', title: 'Efficiency', desc: 'Streamlined processes that save time, reduce costs, and boost productivity.' },
-  { icon: '🤝', title: 'Integrity', desc: 'Transparent communication, honest pricing, and trustworthy partnerships.' },
-  { icon: '🌱', title: 'Growth Mindset', desc: 'We grow with our clients, scaling solutions as their business evolves.' },
-  { icon: '🏆', title: 'Excellence', desc: 'We don\'t settle for good enough — we pursue the highest standard in everything.' },
+  { icon: '🎯', title: 'Client-Centric', desc: 'Client satisfaction is the primary focus of U-CGS management. We assign a dedicated team and manager as direct points of contact for every client.' },
+  { icon: '🔒', title: 'Security First', desc: 'ISO 27001:2013 certified. Biometric facility access, hardware firewalls, VPN connections, and strict NDA agreements with all employees.' },
+  { icon: '⚡', title: 'Efficiency', desc: 'Streamlined processes with 24/7 availability that proactively resolve complex business challenges, ensuring uninterrupted operations.' },
+  { icon: '🤝', title: 'Integrity', desc: 'We strictly uphold client confidentiality, honor preferred communication modes, and do not disclose client identities without explicit written consent.' },
+  { icon: '🌱', title: 'Growth Mindset', desc: 'We conduct regular check-ins and on-site visits, fostering strong relationships and continuously adapting to your evolving business needs.' },
+  { icon: '🏆', title: 'Excellence', desc: 'We offer a pilot project to demonstrate our capabilities before finalizing long-term engagements — because we\'re confident in our quality.' },
 ]
 
 const milestones = [
-  { year: '2015', title: 'Company Founded', desc: 'U-CGS was established with a vision to deliver world-class BPO services.' },
-  { year: '2017', title: 'ISO 27001 Certified', desc: 'Achieved Information Security Management System certification.' },
-  { year: '2019', title: 'US Office Opened', desc: 'Expanded operations with a US office in Cheyenne, Wyoming.' },
-  { year: '2021', title: '200+ Clients Served', desc: 'Crossed a major milestone in client satisfaction and retention.' },
-  { year: '2024', title: 'Expanded Services', desc: 'Launched Medical Records Summarization and enhanced RCM offerings.' },
+  { year: '2015', title: 'Company Founded', desc: 'U-CGS was established with a vision to deliver high-quality, cost-effective outsourcing solutions that drive measurable success.' },
+  { year: '2017', title: 'ISO 27001 Certified', desc: 'Achieved Information Security Management System certification, setting the gold standard for data protection.' },
+  { year: '2019', title: 'US Office Opened', desc: 'Expanded operations with a US office in Cheyenne, Wyoming to better serve American clients across all time zones.' },
+  { year: '2021', title: '200+ Clients Served', desc: 'Crossed a major milestone in client satisfaction and retention with a 99% client retention rate.' },
+  { year: '2024', title: 'Expanded Services', desc: 'Launched Medical Records Summarization and enhanced RCM offerings with front, mid, and back-end cycle coverage.' },
+]
+
+const whyChoose = [
+  {
+    icon: '🔒',
+    title: 'Data Security & Privacy',
+    points: [
+      'Data transfer protected through hardware firewall and VPN connections',
+      'Biometric access control and security cameras across all facilities',
+      'Removable device restrictions in all work areas',
+      'ISO, HIPAA, and data protection protocol compliance',
+      'Strict NDAs and background checks for all employees',
+    ],
+  },
+  {
+    icon: '⭐',
+    title: 'High-Quality Service',
+    points: [
+      'Rigorous quality control protocols at every stage',
+      'Quantitative and qualitative data analysis including trend monitoring',
+      'Significantly reduced operational costs with enhanced efficiency',
+      'On-time, error-free results with customized solutions',
+      'Regular Customer Satisfaction Surveys with active feedback implementation',
+    ],
+  },
+  {
+    icon: '👥',
+    title: 'Experienced Team & Trusted Process',
+    points: [
+      'Highly professional and well-trained team for all business operations',
+      'Management with deep expertise in international markets',
+      'Experienced team leaders and project managers on every account',
+      'Comprehensive background checks including criminal record screening',
+      'Pilot project available before any long-term commitment',
+    ],
+  },
+  {
+    icon: '💼',
+    title: 'Client Advantage',
+    points: [
+      'Fast and efficient delivery without compromising quality',
+      'Measurable improvements in operational performance and productivity',
+      'Flexible and cost-effective pricing tailored to your needs',
+      'Specialized team monitors every project against contract metrics',
+      '24/7 availability ensuring uninterrupted support and operations',
+    ],
+  },
 ]
 
 export default function About() {
@@ -89,6 +136,11 @@ export default function About() {
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 28px;
         }
+        .about-why-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 28px;
+        }
         .timeline-line {
           position: absolute;
           left: 28px; top: 0; bottom: 0;
@@ -121,22 +173,16 @@ export default function About() {
         }
       `}</style>
 
-      {/* ── HERO with image (matches Home style) ── */}
+      {/* ── HERO ── */}
       <section className="about-hero-wrap">
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 15% 85%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 85% 15%, rgba(96,165,250,0.08) 0%, transparent 50%)', pointerEvents: 'none' }} />
         <div className="container about-hero-grid">
 
-          {/* Image col */}
           <div className="about-hero-img-col">
             <div className="ah-main-img" style={{ position: 'absolute', top: 0, left: 0, right: 36, bottom: 36, borderRadius: 22, overflow: 'hidden', boxShadow: '0 28px 72px rgba(0,0,0,0.4)' }}>
-              <img
-                src={about12}
-                alt="U-CGS professional team"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              <img src={about12} alt="U-CGS professional team" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,28,44,0.55) 0%, transparent 60%)' }} />
             </div>
-            {/* Float badge — 500+ clients */}
             <div className="about-hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', minWidth: 160 }}>
               <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>500+</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>Happy Clients</div>
@@ -146,7 +192,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* Text col */}
           <div className="about-hero-text">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 24, padding: '6px 16px', marginBottom: 20 }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#fbbf24', display: 'inline-block', animation: 'pulse 2s infinite' }} />
@@ -157,7 +202,7 @@ export default function About() {
               <span style={{ color: 'var(--primary-light)' }}>Excellence</span>
             </h1>
             <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 32, maxWidth: 460 }}>
-              U-Connect Global Services is a dynamic team of business solutions experts committed to empowering clients to focus on their core strengths.
+              U-CGS is a leading outsourcing service provider delivering cutting-edge Healthcare BPO solutions worldwide — offering end-to-end support for Integrated Health, Insurance, Litigation Support, and Records Retrieval.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
               <Link to="/contact" className="btn-primary">Work With Us</Link>
@@ -174,19 +219,17 @@ export default function About() {
             </div>
           </div>
         </div>
-
-        {/* Bottom wave spacer so image bleeds into next section nicely */}
         <div style={{ height: 60 }} />
       </section>
 
-      {/* MISSION & VISION */}
+      {/* MISSION, VISION, APPROACH */}
       <section>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32 }}>
             {[
-              { icon: '🔭', title: 'Our Mission', text: 'To enable our clients to focus on their core strengths by delivering exceptional, cost-effective outsourcing solutions that drive growth, efficiency, and competitive advantage.' },
-              { icon: '🌟', title: 'Our Vision', text: 'To be the most trusted BPO partner for Healthcare, Legal, and Insurance industries globally — known for excellence, security, and transformative impact.' },
-              { icon: '💡', title: 'Our Approach', text: 'Risk-free transition, hands-on focus, cultural alignment, and local relationship managers ensure every engagement is seamless, transparent, and results-driven.' },
+              { icon: '🔭', title: 'Our Mission', text: 'To help our client base achieve phenomenal business transformation by utilizing all our resources to save them time and money. Our core values guide us, shape our culture, and help us make decisions — our people consistently demonstrate how they live and breathe these values.' },
+              { icon: '🌟', title: 'Our Vision', text: 'To be the most trusted BPO partner for Healthcare, Legal, and Insurance industries globally — delivering high-quality, highly secure, end-to-end Revenue Cycle Management and Health Information Management services around the clock.' },
+              { icon: '💡', title: 'Our Approach', text: 'We assign a dedicated team and manager as direct points of contact for every client. We conduct regular check-ins and on-site visits, fostering strong relationships and continuously adapting to your evolving business needs with 24/7 availability.' },
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <div className="card" style={{ textAlign: 'center' }}>
@@ -216,11 +259,7 @@ export default function About() {
             <FadeIn delay={0.1}>
               <div className="about-story-img" style={{ position: 'relative' }}>
                 <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 56px rgba(0,0,0,0.14)' }}>
-                  <img
-                    src={about11}
-                    alt="Professional team at work"
-                    style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }}
-                  />
+                  <img src={about11} alt="Professional team at work" style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, color-mix(in srgb, var(--navy) 60%, transparent) 0%, transparent 55%)' }} />
                 </div>
                 <div className="about-float-badge" style={{
@@ -240,10 +279,13 @@ export default function About() {
                 <h2 className="section-title">Built on Trust, Driven by Results</h2>
                 <div className="gradient-line" />
                 <p className="section-sub" style={{ marginBottom: 20 }}>
-                  At U-CGS, we prioritize the security of sensitive healthcare data, ensuring the highest standards in data management and service delivery. With close to a decade of practical outsourcing knowledge, U-CGS brings valuable expertise to the table.
+                  U-CGS is a leading outsourcing service provider founded with a vision to provide high-quality, cost-effective outsourcing solutions. Our team of highly qualified, trained, and experienced professionals is committed to delivering tailored solutions that optimize operational performance.
+                </p>
+                <p className="section-sub" style={{ marginBottom: 20 }}>
+                  Unlike other providers, U-CGS specializes in managing entire outsourcing ventures for businesses of all sizes. By handling time-consuming tasks, we enable you to focus on your core competencies while we provide tailored, high-impact solutions.
                 </p>
                 <p className="section-sub" style={{ marginBottom: 32 }}>
-                  We take pride not in claiming to be the best, but in delivering exceptional, cost-effective, and professional solutions that exceed expectations.
+                  With 24/7 availability, we proactively resolve complex business challenges, ensuring uninterrupted operations. Our flexible pricing model allows us to deliver cost-effective, customized services, maximizing value for every client.
                 </p>
                 <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                   {[
@@ -263,6 +305,92 @@ export default function About() {
         </div>
       </section>
 
+      {/* SEAMLESS SERVICE */}
+      <section style={{ background: 'white' }}>
+        <div className="container">
+          <div className="about-story-grid">
+            <FadeIn>
+              <div>
+                <span className="section-tag">Our Commitment</span>
+                <h2 className="section-title">Seamless & Personalized Outsourcing</h2>
+                <div className="gradient-line" />
+                <p className="section-sub" style={{ marginBottom: 20 }}>
+                  At U-CGS, we assign a dedicated team and manager as direct points of contact for every client, ensuring seamless communication and personalized service. Our team conducts regular check-ins and on-site visits, fostering strong relationships and continuously adapting to your evolving business needs.
+                </p>
+                <p className="section-sub" style={{ marginBottom: 32 }}>
+                  We engage with your staff frequently to review project status, optimize workflows, and implement process improvements. Unlike other providers, U-CGS specializes in managing entire outsourcing ventures for businesses of all sizes, delivering a hassle-free and efficient outsourcing experience.
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                  {[
+                    { icon: '👤', text: 'Dedicated manager and team per client account' },
+                    { icon: '🔄', text: 'Regular check-ins, on-site visits & workflow reviews' },
+                    { icon: '🕐', text: '24/7 availability for complex business challenges' },
+                    { icon: '💲', text: 'Flexible, cost-effective pricing model' },
+                    { icon: '🚀', text: 'Pilot project available before long-term commitment' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                      <div style={{ width: 36, height: 36, borderRadius: 10, background: 'var(--light-2)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{item.icon}</div>
+                      <span style={{ color: 'var(--text-main)', fontSize: 15 }}>{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div style={{ background: 'var(--gradient-primary)', borderRadius: 24, padding: '40px 32px', color: 'white' }}>
+                <div style={{ fontSize: 36, marginBottom: 16 }}>❝</div>
+                <p style={{ fontSize: 17, lineHeight: 1.8, opacity: 0.92, marginBottom: 28, fontStyle: 'italic' }}>
+                  "I am truly impressed with the work of U-CGS and your dedicated team members who worked so diligently in retrieving documents for our Firm. Your excellent outsourcing services have given us time to focus on the growth of our Business. I would highly recommend your services to any Business."
+                </p>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: 20 }}>
+                  <div style={{ fontWeight: 700, fontSize: 15 }}>Law Firm Client</div>
+                  <div style={{ fontSize: 13, opacity: 0.7, marginTop: 4 }}>United States</div>
+                </div>
+                <div style={{ marginTop: 24, padding: '16px 0', borderTop: '1px solid rgba(255,255,255,0.2)' }}>
+                  <p style={{ fontSize: 15, lineHeight: 1.75, opacity: 0.88, fontStyle: 'italic' }}>
+                    "My experience with the U-CGS Team has been extremely positive! While significantly reducing our cost of doing business, U-CGS professionalism and efficiency has been unsurpassed!"
+                  </p>
+                  <div style={{ fontWeight: 700, fontSize: 14, marginTop: 12 }}>Insurance Company Client</div>
+                  <div style={{ fontSize: 13, opacity: 0.7, marginTop: 2 }}>United States</div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US — 4 pillars */}
+      <section style={{ background: '#f9fafb' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <FadeIn>
+              <span className="section-tag">Why Choose UCGS</span>
+              <h2 className="section-title">What Sets Us Apart</h2>
+              <p className="section-sub" style={{ margin: '0 auto' }}>
+                UCGS provides high-quality, highly secure, end-to-end services delivered through our global center of excellence, ensuring seamless 24/7 support.
+              </p>
+            </FadeIn>
+          </div>
+          <div className="about-why-grid">
+            {whyChoose.map((pillar, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div className="card" style={{ height: '100%' }}>
+                  <div style={{ fontSize: 32, marginBottom: 14 }}>{pillar.icon}</div>
+                  <h3 style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 17, marginBottom: 16 }}>{pillar.title}</h3>
+                  <div className="gradient-line" style={{ marginBottom: 16 }} />
+                  {pillar.points.map((pt, j) => (
+                    <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 10 }}>
+                      <div style={{ width: 20, height: 20, borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, flexShrink: 0, marginTop: 1 }}>✓</div>
+                      <span style={{ color: 'var(--text-muted)', fontSize: 13.5, lineHeight: 1.5 }}>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* GLOBAL PRESENCE */}
       <section style={{ background: 'white' }}>
         <div className="container">
@@ -277,8 +405,8 @@ export default function About() {
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
                   {[
-                    { flag: '🇺🇸', loc: 'USA', addr: '1021 E Lincolnway Suite 9864, Cheyenne, WY 82001' },
-                    { flag: '🇮🇳', loc: 'India', addr: 'A 1003-1005, The Gateway, Nikol, Ahmedabad - 380049' },
+                    { flag: '🇺🇸', loc: 'USA', addr: '1021 E Lincolnway Suite 9864, Laramie County, Cheyenne, WY 82001', phone: '+1 307-213-4034' },
+                    { flag: '🇮🇳', loc: 'India', addr: 'A 1003-1005, The Gateway, S.P Ring Road, Nikol, Ahmedabad - 380049, GJ', phone: '+91 88666 42472' },
                   ].map((o, i) => (
                     <div key={i} style={{
                       background: 'var(--light-2)',
@@ -290,11 +418,16 @@ export default function About() {
                       <div>
                         <div style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: 4 }}>{o.loc}</div>
                         <div style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.5 }}>{o.addr}</div>
+                        <div style={{ fontSize: 13, color: 'var(--primary)', marginTop: 4, fontWeight: 500 }}>{o.phone}</div>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: 24 }}>
+                <div style={{ marginTop: 20, display: 'flex', gap: 12, alignItems: 'center' }}>
+                  <div style={{ fontSize: 13, color: 'var(--text-muted)' }}>📧</div>
+                  <a href="mailto:Info@u-cgs.com" style={{ color: 'var(--primary)', fontWeight: 600, fontSize: 14 }}>Info@u-cgs.com</a>
+                </div>
+                <div style={{ marginTop: 20 }}>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     background: 'color-mix(in srgb, var(--primary) 12%, transparent)',
@@ -309,11 +442,7 @@ export default function About() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="about-story-img" style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 20px 56px rgba(0,0,0,0.12)' }}>
-                <img
-                  src={about13}
-                  alt="Global business team"
-                  style={{ width: '100%', height: 400, objectFit: 'cover', display: 'block' }}
-                />
+                <img src={about13} alt="Global business team" style={{ width: '100%', height: 400, objectFit: 'cover', display: 'block' }} />
               </div>
             </FadeIn>
           </div>
@@ -325,7 +454,7 @@ export default function About() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 56 }}>
             <FadeIn>
-              <span className="section-tag">Our Values</span>
+              <span className="section-tag">Our Core Values</span>
               <h2 className="section-title">What We Stand For</h2>
             </FadeIn>
           </div>
@@ -429,38 +558,6 @@ export default function About() {
                 </div>
               </FadeIn>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section style={{ background: 'white' }}>
-        <div className="container">
-          <div style={{ position: 'relative', borderRadius: 24, overflow: 'hidden', minHeight: 300 }}>
-            <img
-              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80"
-              alt="Healthcare outsourcing professionals"
-              style={{ width: '100%', height: 320, objectFit: 'cover', display: 'block' }}
-            />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, color-mix(in srgb, var(--navy) 90%, transparent) 0%, color-mix(in srgb, var(--primary) 70%, transparent) 100%)' }} />
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}>
-              <div style={{ color: 'white', fontWeight: 800, fontSize: 'clamp(20px,4vw,32px)', marginBottom: 14 }}>
-                Dedicated to Your Success, Every Day
-              </div>
-              <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 16, maxWidth: 580, lineHeight: 1.7, marginBottom: 28 }}>
-                Our team of certified specialists across Healthcare, Legal, and Insurance domains brings precision, speed, and care to every engagement.
-              </p>
-              <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center' }}>
-                {['🏅 ISO Certified', '🔒 HIPAA Compliant', '⭐ 99% Retention', '🌍 US & India Teams'].map((b, i) => (
-                  <span key={i} style={{
-                    background: 'rgba(255,255,255,0.15)',
-                    border: '1px solid rgba(255,255,255,0.3)',
-                    borderRadius: 20, padding: '7px 16px',
-                    color: 'white', fontSize: 13, fontWeight: 600
-                  }}>{b}</span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
