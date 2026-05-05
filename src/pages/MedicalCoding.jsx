@@ -19,27 +19,28 @@ function FadeIn({ children, delay = 0 }) {
 }
 
 const services = [
-  { icon: '🏥', title: 'Inpatient & Outpatient Coding', desc: 'Accurate ICD-10-CM, CPT, and HCPCS coding for all inpatient admissions and outpatient encounters.' },
-  { icon: '⚕️', title: 'Physician & Pro-Fee Coding', desc: 'Specialty-specific professional fee coding for E&M, procedures, and diagnostic services.' },
-  { icon: '🔄', title: 'HCC & Risk Adjustment', desc: 'Hierarchical Condition Category coding to ensure accurate risk scores and appropriate reimbursement.' },
-  { icon: '📋', title: 'Coding Audits', desc: 'Prospective and retrospective coding audits identifying revenue leakage and compliance risks.' },
-  { icon: '🎓', title: 'Coder Education', desc: 'Targeted training and feedback loops to elevate your in-house coding team\'s accuracy.' },
-  { icon: '⚡', title: 'Denial Management', desc: 'Coding-related denial analysis and correction to recover refused claims quickly.' },
+  { icon: '🏥', title: 'Inpatient & Outpatient Coding', desc: 'Accurate ICD-10-CM, CPT, and HCPCS coding for all inpatient admissions and outpatient encounters. Our coders access superbills and detailed patient information through a secure network.' },
+  { icon: '⚕️', title: 'Physician & Pro-Fee Coding', desc: 'Specialty-specific professional fee coding for E&M, procedures, and diagnostic services across 40+ medical specialties. Every coded document is reviewed by our medical coding manager.' },
+  { icon: '🔄', title: 'HCC & Risk Adjustment', desc: 'Hierarchical Condition Category coding to ensure accurate risk scores and appropriate reimbursement. Our certified coders stay updated with evolving regulations to deliver precise results.' },
+  { icon: '📋', title: 'Coding Audits & Reviews', desc: 'Prospective and retrospective coding audits identifying revenue leakage, missed charges, and compliance risks — helping you maximize financial outcomes and ensure regulatory compliance.' },
+  { icon: '🎓', title: 'Coder Education & Training', desc: 'Targeted training and feedback loops to elevate your in-house coding team\'s accuracy. Our coders are always updated with general coding guidelines necessary for CPT, HCPCS, and ICD-10 reporting.' },
+  { icon: '⚡', title: 'Denial Management', desc: 'Coding-related denial analysis and correction to recover refused claims quickly. Clean claims and fewer denials result in improved cash flow and reduced administrative burden for your team.' },
 ]
 
 const metrics = [
-  { num: '95%+', label: 'First-Pass Rate' },
+  { num: '99%', label: 'Coding Accuracy Rate' },
   { num: '40+', label: 'Specialties Covered' },
   { num: '48hr', label: 'Avg Turnaround' },
   { num: '0%', label: 'Compliance Violations' },
 ]
 
-const checkpoints = [
-  '95%+ first-pass claim acceptance rate',
-  'Specialty coding for 40+ medical disciplines',
-  'HIPAA-compliant workflows and data handling',
-  '24–48 hour average chart turnaround time',
-  'Ongoing education on coding guideline updates',
+const advantages = [
+  'Better performance via specialized IT and physical infrastructure',
+  'Well-trained, highly skilled certified coders follow all general coding guidelines and updates for CPT, HCPCS, and ICD-10',
+  'Clean claims and fewer denials — improved cash flow from day one',
+  'U-CGS certified coders must meet 99% coding accuracy within assured turnaround time',
+  'Coded documents checked by medical coding manager before delivery',
+  'Cost reduction through low workforce cost and easy 24/7 operations across time zones',
 ]
 
 export default function MedicalCoding() {
@@ -79,6 +80,23 @@ export default function MedicalCoding() {
           gap: 14px;
           margin-bottom: 20px;
         }
+        .mc-detail-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: start;
+        }
+
+        /* ── Image blocks used in Why + Detail sections ── */
+        .mc-section-img {
+          width: 100%;
+          border-radius: 18px;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+          aspect-ratio: 4/3;
+          object-fit: cover;
+          display: block;
+        }
 
         @media (max-width: 768px) {
           .mc-hero-grid {
@@ -87,54 +105,51 @@ export default function MedicalCoding() {
             padding: 28px 16px 0 !important;
           }
           .mc-hero-text { order: 2 !important; }
-          .mc-hero-img  { order: 1 !important; height: 220px !important; }
+          .mc-hero-img  { order: 1 !important; height: 240px !important; }
           .mc-hero-float { display: none !important; }
-          .mc-why-grid {
-            grid-template-columns: 1fr !important;
-            gap: 32px !important;
-          }
-          .mc-why-img { order: -1; }
+          .mc-why-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .mc-why-img  { order: -1; }
+          .mc-detail-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
         }
       `}</style>
 
-      {/* ── HERO with image ── */}
+      {/* ── HERO ── */}
       <section className="mc-hero-wrap">
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(96,165,250,0.07) 0%, transparent 50%)', pointerEvents: 'none' }} />
         <div className="container mc-hero-grid">
 
-          {/* Image col */}
           <div className="mc-hero-img">
             <div style={{ position: 'absolute', top: 0, left: 0, right: 36, bottom: 36, borderRadius: 22, overflow: 'hidden', boxShadow: '0 28px 72px rgba(0,0,0,0.4)' }}>
               <img
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
-                alt="Medical coding professionals"
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&q=85&auto=format&fit=crop"
+                alt="Medical coding professionals at work"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(11,28,44,0.6) 0%, transparent 60%)' }} />
             </div>
-            {/* Float stat card */}
             <div className="mc-hero-float" style={{ position: 'absolute', bottom: 0, right: 0, background: 'white', borderRadius: 14, padding: '16px 20px', boxShadow: '0 12px 40px rgba(0,0,0,0.22)', minWidth: 160 }}>
-              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>95%+</div>
-              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>First-Pass Rate</div>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--primary)' }}>99%</div>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 500 }}>Coding Accuracy Rate</div>
               <div style={{ marginTop: 6, height: 4, background: 'var(--light-2)', borderRadius: 2 }}>
-                <div style={{ height: '100%', width: '95%', background: 'var(--gradient-button)', borderRadius: 2 }} />
+                <div style={{ height: '100%', width: '99%', background: 'var(--gradient-button)', borderRadius: 2 }} />
               </div>
             </div>
-            {/* Float ISO card */}
           </div>
 
-          {/* Text col */}
           <div className="mc-hero-text">
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 24, padding: '6px 16px', marginBottom: 20 }}>
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--primary-light)', display: 'inline-block', animation: 'pulse 2s infinite' }} />
               <span style={{ color: 'rgba(255,255,255,0.9)', fontSize: 12, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase' }}>Medical Coding Services</span>
             </div>
             <h1 style={{ fontSize: 'clamp(28px,4.5vw,52px)', fontWeight: 800, color: 'white', lineHeight: 1.12, marginBottom: 18, letterSpacing: '-0.5px' }}>
-              Precise Coding.<br />Maximum<br />
-              <span style={{ color: 'var(--primary-light)' }}>Reimbursement.</span>
+              Accurate & Compliant<br />Medical Coding.<br />
+              <span style={{ color: 'var(--primary-light)' }}>Maximum Revenue.</span>
             </h1>
-            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 32, maxWidth: 460 }}>
-              Our certified medical coders bring accuracy, compliance, and speed to every chart — reducing denials and improving your bottom line.
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 16, maxWidth: 460 }}>
+              Medical coding ensures diagnoses, procedures, and services are accurately represented using universal coding systems — facilitating seamless communication and compliance in healthcare operations.
+            </p>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: 32, maxWidth: 460 }}>
+              At U-CGS, we provide expert medical coding and coding review services to optimize your revenue cycle management, enhance billing accuracy, and identify missed charges and revenue opportunities.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 32 }}>
               <Link to="/contact" className="btn-primary">Get a Coding Quote</Link>
@@ -181,6 +196,9 @@ export default function MedicalCoding() {
             <FadeIn>
               <span className="section-tag">Our Coding Services</span>
               <h2 className="section-title">End-to-End Medical Coding Solutions</h2>
+              <p className="section-sub" style={{ margin: '0 auto' }}>
+                Our quality-driven and cost-effective services offer a more profitable alternative to in-house coding, ensuring optimal performance and seamless execution.
+              </p>
             </FadeIn>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
@@ -197,19 +215,19 @@ export default function MedicalCoding() {
         </div>
       </section>
 
-      {/* WHY U-CGS */}
+      {/* ADVANTAGES OF OUTSOURCING — with real image */}
       <section style={{ background: 'white' }}>
         <div className="container">
           <div className="mc-why-grid">
             <FadeIn>
               <div>
-                <span className="section-tag">Why U-CGS Coding</span>
-                <h2 className="section-title">Certified Coders Who Deliver Results</h2>
+                <span className="section-tag">Why Outsource to U-CGS</span>
+                <h2 className="section-title">Advantages of Outsourcing Your Medical Coding</h2>
                 <div className="gradient-line" />
                 <p className="section-sub" style={{ marginBottom: 28 }}>
-                  Our team of CPC, CCS, and CRC certified coders brings specialty expertise across 40+ medical specialties, ensuring every claim is coded with precision.
+                  Our team of CPC, CCS, and CRC certified coders brings specialty expertise across 40+ medical specialties. With a strong focus on accuracy, efficiency, and compliance — partner with U-CGS for reliable medical coding solutions that enhance efficiency and financial success.
                 </p>
-                {checkpoints.map((item, i) => (
+                {advantages.map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                     <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, flexShrink: 0, marginTop: 1 }}>✓</div>
                     <span style={{ color: 'var(--text-main)', fontSize: 15, lineHeight: 1.5 }}>{item}</span>
@@ -222,9 +240,17 @@ export default function MedicalCoding() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <div className="mc-why-img">
+                {/* Real image at top */}
+                <div style={{ borderRadius: 18, overflow: 'hidden', marginBottom: 16, boxShadow: '0 16px 48px rgba(0,0,0,0.12)' }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=700&q=85&auto=format&fit=crop"
+                    alt="Healthcare professional reviewing medical data"
+                    style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
                 <div className="mc-metrics-inner">
                   {[
-                    { num: '95%+', label: 'First-Pass Rate', bg: 'var(--light-2)', border: 'var(--border)', color: 'var(--primary)' },
+                    { num: '99%', label: 'Accuracy Rate', bg: 'var(--light-2)', border: 'var(--border)', color: 'var(--primary)' },
                     { num: '40+', label: 'Specialties', bg: 'var(--light-2)', border: 'var(--border)', color: 'var(--primary-dark)' },
                     { num: '48hr', label: 'Turnaround', bg: '#fffbeb', border: '#fde68a', color: '#b45309' },
                     { num: '0%', label: 'Compliance Gaps', bg: '#f0fdf4', border: '#bbf7d0', color: '#15803d' },
@@ -235,12 +261,20 @@ export default function MedicalCoding() {
                     </div>
                   ))}
                 </div>
-                <div style={{ background: 'var(--gradient-primary)', borderRadius: 16, padding: '24px 28px', color: 'white', display: 'flex', alignItems: 'center', gap: 16 }}>
-                  <div style={{ fontSize: 40 }}>🏅</div>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 4 }}>ISO 27001:2013 Certified</div>
-                    <div style={{ fontSize: 13, opacity: 0.8 }}>HIPAA-compliant coding workflows with zero tolerance for data breaches.</div>
-                  </div>
+                {/* How it works */}
+                <div style={{ background: 'var(--light-2)', border: '1px solid var(--border)', borderRadius: 16, padding: '20px 22px' }}>
+                  <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 14, marginBottom: 12 }}>⚙️ How Our Coding Process Works</div>
+                  {[
+                    'Access superbills & patient info via secure network',
+                    'Certified coders assign CPT, HCPCS & ICD-10 codes',
+                    'Medical coding manager reviews every document',
+                    'Clean claims submitted with 99% accuracy guaranteed',
+                  ].map((step, i) => (
+                    <div key={i} style={{ display: 'flex', gap: 10, marginBottom: i < 3 ? 10 : 0, alignItems: 'flex-start' }}>
+                      <div style={{ width: 20, height: 20, borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>{i + 1}</div>
+                      <span style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.5 }}>{step}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </FadeIn>
@@ -259,11 +293,76 @@ export default function MedicalCoding() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
               {['Cardiology', 'Orthopedics', 'Neurology', 'Oncology', 'Radiology', 'Emergency Medicine',
                 'Internal Medicine', 'Pediatrics', 'OB/GYN', 'Psychiatry', 'Pulmonology', 'Gastroenterology',
-                'Dermatology', 'Ophthalmology', 'Urology', 'Endocrinology'].map((s, i) => (
+                'Dermatology', 'Ophthalmology', 'Urology', 'Endocrinology', 'Rheumatology', 'Nephrology'].map((s, i) => (
                 <span key={i} style={{ background: 'white', border: '1px solid var(--border)', color: 'var(--primary-dark)', padding: '7px 16px', borderRadius: 24, fontSize: 13, fontWeight: 500 }}>{s}</span>
               ))}
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* COST BENEFIT + IMAGE */}
+      <section style={{ background: 'white' }}>
+        <div className="container">
+          <div className="mc-detail-grid">
+            <FadeIn>
+              <div style={{ background: 'var(--light-2)', border: '1px solid var(--border)', borderRadius: 20, padding: '36px 32px' }}>
+                <div style={{ fontWeight: 700, color: 'var(--text-main)', fontSize: 18, marginBottom: 24 }}>💡 In-House vs U-CGS Coding</div>
+                {[
+                  { label: 'Cost per coder/month', inhouse: 'High ($5K–$8K)', ucgs: 'Low & flexible' },
+                  { label: 'Availability', inhouse: 'Business hours only', ucgs: '24/7 global ops' },
+                  { label: 'Coding accuracy', inhouse: 'Variable', ucgs: '99% guaranteed' },
+                  { label: 'Turnaround time', inhouse: '2–5 days', ucgs: '24–48 hours' },
+                  { label: 'Specialties covered', inhouse: 'Limited', ucgs: '40+ disciplines' },
+                  { label: 'Compliance updates', inhouse: 'Manual tracking', ucgs: 'Always current' },
+                ].map(({ label, inhouse, ucgs }, i) => (
+                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr', gap: 8, padding: '10px 0', borderBottom: i < 5 ? '1px solid var(--border)' : 'none', alignItems: 'center' }}>
+                    <span style={{ fontSize: 13, color: 'var(--text-main)', fontWeight: 500 }}>{label}</span>
+                    <span style={{ fontSize: 12, color: '#ef4444', textAlign: 'center', background: '#fef2f2', borderRadius: 6, padding: '3px 6px' }}>{inhouse}</span>
+                    <span style={{ fontSize: 12, color: '#15803d', textAlign: 'center', background: '#f0fdf4', borderRadius: 6, padding: '3px 6px', fontWeight: 600 }}>{ucgs}</span>
+                  </div>
+                ))}
+                <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr', gap: 8, paddingTop: 12 }}>
+                  <span />
+                  <span style={{ fontSize: 11, color: 'var(--text-muted)', textAlign: 'center' }}>In-House</span>
+                  <span style={{ fontSize: 11, color: 'var(--primary)', textAlign: 'center', fontWeight: 700 }}>U-CGS</span>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <div>
+                {/* Image above certifications */}
+                <div style={{ borderRadius: 16, overflow: 'hidden', marginBottom: 24, boxShadow: '0 12px 40px rgba(0,0,0,0.1)' }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=700&q=85&auto=format&fit=crop"
+                    alt="Certified medical coding specialist"
+                    style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+                <span className="section-tag">Certifications</span>
+                <h2 className="section-title">Certified Coders Who Deliver Results</h2>
+                <div className="gradient-line" />
+                <p className="section-sub" style={{ marginBottom: 24 }}>
+                  Our team of CPC, CCS, and CRC certified coders brings specialty expertise across 40+ medical specialties, ensuring every claim is coded with precision and submitted clean.
+                </p>
+                {[
+                  { icon: '⚕️', label: 'CPC Certified Professional Coders' },
+                  { icon: '📜', label: 'CCS Certified Coding Specialists' },
+                  { icon: '🔄', label: 'CRC Certified Risk Adjustment Coders' },
+                  { icon: '🏅', label: 'ISO 27001:2013 certified workflows' },
+                  { icon: '🔒', label: 'HIPAA-compliant at every touchpoint' },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 12 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 10, background: 'var(--light-2)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>{item.icon}</div>
+                    <span style={{ fontSize: 15, color: 'var(--text-main)', fontWeight: 500 }}>{item.label}</span>
+                  </div>
+                ))}
+                <Link to="/contact" className="btn-primary" style={{ marginTop: 20, display: 'inline-block' }}>
+                  Book Free Coding Audit
+                </Link>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

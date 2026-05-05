@@ -1,28 +1,38 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/logo.png'
+import logo from '../assets/newlogo.png'
 
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--navy)', color: 'rgba(255,255,255,0.68)', marginTop: 0 }}>
-      {/* Top accent bar — uses theme primary color */}
+      {/* Top accent bar */}
       <div style={{ height: 4, background: 'linear-gradient(90deg, var(--primary-dark), var(--primary), var(--primary-light))' }} />
 
       <div className="container" style={{ paddingTop: 52, paddingBottom: 44 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 44, marginBottom: 44 }}>
 
-          {/* Brand */}
+          {/* Brand — logo image only */}
           <div>
-            <div className="footer-brand-row" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-              <img src={logo} alt="U-CGS Logo" style={{ width: 38, height: 38, borderRadius: 8, background: 'white', padding: 2, objectFit: 'contain', flexShrink: 0 }} />
-              <div>
-                <div style={{ color: 'white', fontWeight: 700, fontSize: 14 }}>U-Connect Global Services</div>
-                <div style={{ fontSize: 10, color: 'var(--primary-light)', letterSpacing: 1, opacity: 0.7 }}>BPO Solutions</div>
-              </div>
+            <div className="footer-brand-row" style={{ marginBottom: 18 }}>
+              <Link to="/">
+                <img
+                  src={logo}
+                  alt="U-Connect Global Services"
+                  style={{
+                    height: 48,
+                    width: 'auto',
+                    objectFit: 'contain',
+                    background: 'white',
+                    borderRadius: 10,
+                    padding: '5px 12px',
+                    display: 'block',
+                  }}
+                />
+              </Link>
             </div>
             <p style={{ fontSize: 13, lineHeight: 1.7, marginBottom: 18, color: 'rgba(255,255,255,0.55)' }}>
               A dynamic team of business solutions experts with close to a decade of outsourcing experience.
             </p>
-            {/* ISO badge — uses primary variable */}
+            {/* ISO badge */}
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: 7,
               background: 'color-mix(in srgb, var(--primary) 20%, transparent)',
@@ -107,7 +117,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Mobile responsive */}
       <style>{`
         @media (max-width: 600px) {
           footer .container > div:first-child {
